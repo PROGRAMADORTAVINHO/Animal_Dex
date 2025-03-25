@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body-perfil {
+    font-family: Arial, sans-serif;
+    background-color: #e9f1ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}   
+
+/* Barra superior */
+.top-bar-perfil {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 10px 20px;
+    background-color: white;
+    border-bottom: 2px solid #dde1e6;
+}
+
+.back-button-perfil {
+    text-decoration: none;
+    color: #5a5a5a;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.back-button-perfil:hover {
+    color: black;
+}
+
+.title_reader {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1a1f36;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* Card */
+.card-perfil {
+    margin-top: 5%;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 450px;
+}
+
+/* Avatar */
+.avatar-perfil {
+    width: 90px;
+    height: 90px;
+    background: #2979ff;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 10px auto;
+}
+
+.card-perfil .h1-perfil {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    color: black;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.h1-perfil-senha {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    color: black;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+    margin-top: 25px;
+}
+
+/* Formulários */
+.form-perfil {
+    display: flex;
+    flex-direction: column; /* Mantém os elementos alinhados verticalmente */
+    text-align: left;
+}
+.form-perfil .h1-perfil{
+    margin-top: 5%;
+}
+
+.label-perfil {
+    text-align: left;
+    font-size: 14px;
+    margin: 10px 0 5px;
+    display: block; /* Faz com que as labels fiquem acima dos inputs corretamente */
+}
+
+.input-perfil {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.save-btn,  .change-btn{
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    background: #2979ff;
+}
+
+.save-btn:hover, .change-btn:hover{
+    background: #1c6bf2;
+}
+
+.espaco-perfil {
+    height: 50px;
+}

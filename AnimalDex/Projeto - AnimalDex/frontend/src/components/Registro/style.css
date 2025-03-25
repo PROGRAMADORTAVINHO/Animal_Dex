@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.Body-registro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: #f5f7fa;
+}
+
+.container-registro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.card-registro {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 40px 0px 50px 0px; /* Adiciona espaço superior */
+}
+
+.h1-registro {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.form-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label-registro {
+    text-align: left;
+    font-weight: 500;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.input-registro {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.termos {
+    display: flex;
+    align-items: start;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;    
+}
+
+.termos .input-termo {
+    width: auto;
+    margin: 0;
+}
+
+.termos .label-termo {
+    margin-left: 5px;
+    display: inline;
+    cursor: pointer;
+}
+
+.termos .a-termo {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.termos .a-termo:hover {
+    text-decoration: underline;
+}
+
+.btn-submit-registro {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-submit-registro:hover {
+    background: #0056b3;
+}
+
+.p-registro {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.p-registro .entrar-registro {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.p-registro .entrar-registro:hover {
+    text-decoration: underline;
+}

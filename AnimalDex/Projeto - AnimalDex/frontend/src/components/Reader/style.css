@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body-reader {
+    font-family: Arial, sans-serif;
+    background-color: red;
+}
+
+.top-bar-reader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    color: black;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    padding: 5px 10px;
+}
+
+.logo .img-reader {
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.usuario-reader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    background-color: blue;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 180px;
+    display: none;  /* Escondido por padrão */
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.dropdown-menu .ul-reader {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu .ul-reader .li-reader {
+    padding: 10px;
+}
+
+.dropdown-menu .ul-reader .li-reader:last-child {
+    border-bottom: none;
+}
+
+/* Links do dropdown */
+.dropdown-menu .ul-reader .li-reader .itens {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+/* Efeito hover nos itens do menu */
+.dropdown-menu .ul-reader .li-reader:hover {
+    background: #f0f0f0;
+}
+
+/* Exibir o menu ao passar o mouse */
+.usuario-reader:hover .dropdown-menu {
+    display: block;  /* Aqui garantimos que o menu apareça */
+}

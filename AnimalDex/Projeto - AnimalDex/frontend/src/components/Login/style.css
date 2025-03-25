@@ -1,0 +1,112 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.Body_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f7fa;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+    max-width: 400px;
+}
+
+.h1-login {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.p-login {
+    margin-top: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label-login {
+    text-align: left;
+    font-weight: 500;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.input-login {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn-submit-login {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.btn-submit-login:hover {
+    background: #0056b3;
+}
+
+.esqueceu-senha {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.esqueceu-senha .cadastre_se-login{
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.esqueceu-senha .cadastre_se-login:hover {
+    text-decoration: underline;
+}
+
+.cadastro {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.cadastro .cadastre_se-login{
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cadastro .cadastre_se-login:hover {
+    text-decoration: underline;
+}

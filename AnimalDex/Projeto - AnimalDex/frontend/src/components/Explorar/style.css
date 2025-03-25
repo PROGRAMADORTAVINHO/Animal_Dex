@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body-explorar {
+    font-family: Arial, sans-serif;
+    background-color: #f3f6fc;
+}
+
+/* Barra superior */
+.top-bar-explorar {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 10px 20px;
+    background-color: white;
+    border-bottom: 2px solid #dde1e6;
+}
+
+.back-button-explorar {
+    text-decoration: none;
+    color: #5a5a5a;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.back-button-explorar:hover {
+    color: black;
+}
+
+.title_reader {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1a1f36;
+    margin: 0;
+}
+
+/* Card */
+.card-explorar {
+    background-color: white;
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    overflow: hidden;
+}
+
+/* Imagem no Card */
+.card-explorar .img-explorar {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Textos do Card */
+.card-explorar .h1-explorar {
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    margin: 15px 20px 5px;
+}
+
+.scientific_name{
+    font-size: 14px;
+    color: #5a5a5a;
+    margin: 10px 20px 5px;
+    text-align: justify;
+}
+
+.card-explorar .p-explorar {
+    font-size: 14px;
+    color: #5a5a5a;
+    margin: 0 20px 10px;
+    text-align: justify;
+}
+
+.card-explorar .h2-explorar {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin: 10px 20px;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}

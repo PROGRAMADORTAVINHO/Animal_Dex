@@ -1,0 +1,454 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body-reader {
+    font-family: Arial, sans-serif;
+    background-color: red;
+}
+
+.top-bar-reader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    color: black;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    padding: 5px 10px;
+}
+
+.logo .img-reader {
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.usuario-reader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    background-color: blue;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 180px;
+    display: none;  /* Escondido por padrão */
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.dropdown-menu .ul-reader {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu .ul-reader .li-reader {
+    padding: 10px;
+}
+
+.dropdown-menu .ul-reader .li-reader:last-child {
+    border-bottom: none;
+}
+
+/* Links do dropdown */
+.dropdown-menu .ul-reader .li-reader .itens {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+/* Efeito hover nos itens do menu */
+.dropdown-menu .ul-reader .li-reader:hover {
+    background: #f0f0f0;
+}
+
+/* Exibir o menu ao passar o mouse */
+.usuario-reader:hover .dropdown-menu {
+    display: block;  /* Aqui garantimos que o menu apareça */
+}
+
+.body-Home-User{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container-HomeUser {
+    max-width: 800px;
+    margin: auto;
+}
+
+.cardUser {
+    background: white;
+    height: 160px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.h1-cardUser{
+    margin-top: 3%;
+    color: #333;
+}
+
+.p-cardUser{
+    margin-top: 3%;
+    color: #666;
+}
+
+.statusUser {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    height: 190px;
+}
+
+.descobertas, .level {
+    background: white;
+    padding: 25px;
+    flex: 1;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.icon-descobertas, .icon-level {
+    font-size: 2em;
+    width: 50px;
+    height: 50px;
+}
+
+.content-descobertas{
+    margin-top: 20px;
+    margin-left: 2%;
+}
+
+.h3-content-descobertas {
+    color: #333;
+    font-size: 1.5em;
+}
+
+.h3-level{
+    color: #333;
+    margin-top: 8%;
+}
+
+.p-h3-content-descobertas, .p-level {
+    margin-top: 20px;
+    color: #666;
+    font-size: 1em;
+}
+
+.explorar-capturar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.explorar, .capturar {
+    flex: 1;
+    padding: 15px;
+    color: white;
+    border-radius: 10px;
+}
+
+.h2-explorar-capturar{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.p-explorar-capturar{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.explorar { 
+    background: #007bff; 
+}
+
+.capturar { 
+    background: #28a745; 
+}
+
+.sesao2 {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.extincao, .evento-natureza{
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.h2-extincao, .h2-evento-natureza {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.animal-extincao {
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.158);
+    border: solid 1px rgba(255, 0, 0, 0.226);
+    margin-bottom: 15px;
+}
+
+.evento {
+    width: 90%;
+    height: 26%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(30, 255, 0, 0.158);
+    border: solid 1px rgba(30, 255, 0, 0.226);
+    margin-bottom: 15px;
+}
+
+.icon-animal, .icon-evento-natureza {
+    display: flex;
+    align-items: center;
+}
+
+.icon-evento-natureza{
+    margin-top: 3%;
+}
+
+.icon-extincao, .icon-evento {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.animal-extincao-content, .content-evento {
+    flex-grow: 1;
+}
+
+.h3-secao2 {
+    margin: 0;
+    font-size: 17px;
+    color: #34495e;
+}
+
+.animal-extincao-content .p-secao2 {
+    margin: 5px 0;
+    color: #e74c3c;
+}
+
+.content-evento .p-secao2 {
+    margin: 5px 0;
+    color: #2e7c00;
+}
+
+.quantidade-extincao {
+    color: rgba(0, 0, 0, 0.747);
+}
+
+.sesao3 {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.habitat-da-semana, .CuriosityDay{
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.h3-habitat{
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.h3-habitat-especie{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.p-habitat-da-semana{
+    margin-top: 0;
+}
+
+.ul-habitat-da-semana {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 5px;
+}
+
+.li-habitat-da-semana {
+    background: #dce6ff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.h2-CuriosityDay, .h2-habitat-da-semana {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.title-Curiosity{
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.img-CuriosityDay {
+    margin-bottom: 20px;
+}
+
+.foto-animal {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.content-CuriosityDay {
+    color: #7f8c8d;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;
+    margin: 0;
+}
+
+.RecentActivities {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.Activities {
+    margin-top: 10px;
+    border: solid 1px rgba(0, 0, 0, 0.13);
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.ImgAnimal {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.content-RecentActivities {
+    margin-left: 15px;
+}
+
+.h3-RecentActivities {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.p-RecentActivities {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.espaco-HomeUser {
+    height: 50px;
+}
+
+.modal {
+    display: none; /* Esconder a modal por padrão */
+    position: fixed;
+    z-index: 1000; /* Garantir que fique acima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+    justify-content: center;
+    align-items: center;
+}
+
+.h2-modal{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 800px;
+}
+
+.busca-btn{
+    display: flex;
+}
+
+.intut-modal {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-modal{
+    margin: 10px;
+    height: 15%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-modal:hover {
+    background-color: #0056b3;
+}

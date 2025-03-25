@@ -1,0 +1,205 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body-HomeBemvindo {
+    font-family: Arial, sans-serif;
+    background-color: #F3F5FC;
+    text-align: center;
+}
+
+/* ------------------------------------ Reader ------------------------------------ */
+
+.top-bar-HomeBemvindo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    color: black;
+}
+
+.logo-HomeBemvindo {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    padding: 5px 10px;
+}
+
+.logo-HomeBemvindo .img-HomeBemvindo {
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.top-bar-HomeBemvindo .btn-HomeBemvindo {
+    background-color: #3B82F6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.container-HomeBemvindo {
+    width: 80%;
+    margin: auto;
+}
+
+/* ------------------------------------ Seção de boas-vindas ------------------------------------ */
+.card-start-HomeBemvindo {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    height: 35vh;
+}
+
+.card-start-HomeBemvindo .h1-cs-HomeBemvindo {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2em;
+}
+
+.card-start-HomeBemvindo .p-cs-HomeBemvindo {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.card-start-HomeBemvindo .btn-cs-HomeBemvindo, .start-journey .btn-sj-HomeBemvindo {
+    background-color: #3B82F6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* ----------------------------------- Cards de funcionalidades ----------------------------------- */
+
+.animaldex-items {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+    gap: 20px;
+}
+
+.animaldex-items .items-ai-HomeBemvindo {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.icon-ai-HomeBemvindo {
+    margin-top: 10%;
+    margin-bottom: 18%;
+    font-size: 2em;
+    align-self: flex-start;
+}
+
+.h2-ai-HomeBemvindo{
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 10%;
+}
+
+.p-ai-HomeBemvindo {
+    text-align: center;
+    color: #666;
+    margin-bottom: 10%;
+}
+/* ------------------------------------ Seção de etapas ------------------------------------ */
+.steps-HomeBemvindo {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 40px 0;
+}
+
+.steps-HomeBemvindo .h1-steps-HomeBemvindo {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: #333;
+}
+
+.steps-HomeBemvindo .step, .steps-HomeBemvindo .step-icon {
+    display: inline-block;
+    width: 22%;
+    margin: 10px;
+    text-align: center;
+}
+
+.step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #3B82F6;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px; /* Garante alinhamento vertical */
+}
+
+.h3-steps-HomeBemvindo{
+    color: #333;
+    font-size: 1.2em;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.p-steps-HomeBemvindo {
+    align-items: center;
+    color: #666;
+    margin-bottom: 10%;
+}
+
+/* ------------------------------------ Seção final ------------------------------------ */
+.start-journey-HomeBemvindo {
+    background: #3B82F6;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.start-journey-HomeBemvindo .btn-sj-HomeBemvindo {
+    height: 50px;
+    background-color: white;
+    color: #3B82F6;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.start-journey-HomeBemvindo .h1-sj-HomeBemvindo {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 1.8em;
+}
+
+.start-journey-HomeBemvindo .p-sj-HomeBemvindo {
+    margin-bottom: 2%;
+}
+
+.espaco-HomeBemvindo {
+    height: 50px;
+}
