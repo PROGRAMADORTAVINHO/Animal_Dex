@@ -26,7 +26,7 @@ const RegistroCard = () => {
             });
             const token = loginResponse.data.token;
             localStorage.setItem('token', token); // Armazena o token no localStorage
-            navigate('/perfil'); // Redireciona para a página de perfil
+            navigate('/home-user'); // Redireciona para a página de perfil
         } catch (err) {
             setError('Erro ao registrar');
         }

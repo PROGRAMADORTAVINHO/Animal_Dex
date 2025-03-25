@@ -17,7 +17,7 @@ const Reader = () => {
                     <div class="dropdown-menu">
                         <ul className='ul-reader'>
                             <li className='li-reader'>
-                                <Link to="/" className="itens">Meu Perfil</Link>
+                                <Link to="/perfil" className="itens">Meu Perfil</Link>
                             </li>
                             <li className='li-reader'>
                                 <Link to="/" className="itens">Tutorial de captura</Link>

@@ -7,10 +7,7 @@ import HomeInicio from './Pages/HomeBemVindo';
 import HomeUser from './Pages/HomeUser';
 import Login from './Pages/Login';
 import Registro from './Pages/Registro';
-import PerfilTeste from './Pages/Teste_perfil';
-
-
-import Perfil from './perfil';
+import Perfil from './Pages/Perfil';
 
 const App = () => {
     return (
@@ -20,14 +17,14 @@ const App = () => {
                 <Route path="/animaldex-zerada" element={<AnimalDexZerada />} />
                 <Route path="/explorar" element={<Explorar />} />
                 <Route path="/login" element={<Login />} /> 
-                <Route path="/registro" element={<Registro />} />
-                <Route path="/teste" element={<PerfilTeste />} />  {/* trocar senha e e-mail */}
+                <Route path="/registro" element={<Registro />} /> 
                 <Route path="/home-user" element={<HomeUser />} /> {/* Home logada */}
                 <Route path="/perfil" element={<Perfil />} /> {/* Home logada */}
                 {/* <Route path="/home-user" element={<HomeUser />} /> */}
             </Routes>
         </Router>
     );
+
 };
 
 export default App;

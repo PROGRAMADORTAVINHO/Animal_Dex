@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Rafa\Documents\Facul\7º Semestre\Design de Aplicativo\Projeto - AnimalDex\venv
+set VIRTUAL_ENV=D:\Senac\7° Semestre\Design de Aplicativos\Animal_Dex\Animal_Dex\AnimalDex\Projeto - AnimalDex\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

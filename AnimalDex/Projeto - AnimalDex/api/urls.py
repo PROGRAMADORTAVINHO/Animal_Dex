@@ -11,6 +11,6 @@ urlpatterns = [
     path('login/', obtain_auth_token, name='login'),
     path('identificar/', ViewIdentificacaoAnimal.as_view(), name='identificar'),
     path('animais/', ViewListaAnimais.as_view(), name='animais-lista'),
-    path('perfil/', ViewPerfilUsuario.as_view(), name='usuario-perfil'),
+    path('home-user/', ViewPerfilUsuario.as_view(), name='usuario-perfil'),
     path('perfil/fotos/', ViewFotosAnimaisUsuario.as_view(), name='usuario-perfil-fotos'),
 ]
