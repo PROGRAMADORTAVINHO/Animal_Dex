@@ -8,6 +8,7 @@ import HomeUser from './Pages/HomeUser';
 import Login from './Pages/Login';
 import Registro from './Pages/Registro';
 import Perfil from './Pages/Perfil';
+import TestarIA from './components/IdentificarAnimais/IdentificarAnimais';
 
 const App = () => {
     return (
@@ -20,6 +21,7 @@ const App = () => {
                 <Route path="/registro" element={<Registro />} /> 
                 <Route path="/home-user" element={<HomeUser />} /> {/* Home logada */}
                 <Route path="/perfil" element={<Perfil />} /> {/* Home logada */}
+                <Route path="/testar-ia" element={<TestarIA />} />
                 {/* <Route path="/home-user" element={<HomeUser />} /> */}
             </Routes>
         </Router>
