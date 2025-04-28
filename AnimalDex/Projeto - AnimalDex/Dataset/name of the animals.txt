@@ -1,14 +1,31 @@
-antelope
-badger
-bat
-bear
-bee
-beetle
-bison
-boar
-butterfly
-cat
-caterpillar
-chimpanzee
-cockroach
-cow
+Apis mellifera
+Anas platyrhynchos
+Anser anser
+Blattodea
+Bos taurus
+Caelifera
+Canis lupus familiaris
+Coccinellidae
+Coleoptera
+Columba livia
+Corvus brachyrhynchos
+Culicidae
+Delphinidae
+Equus ferus caballus
+Felis catus
+Gorilla gorilla
+Heterocera
+Lepidoptera larvae
+Mus musculus
+Pan troglodytes
+Panthera pardus
+Phalangeriformes
+Picidae
+Psittaciformes
+Rattus norvegicus
+Rhopalocera
+Sciuridae
+Serpentes
+Sus scrofa domesticus
+Testudines
+Trochilidae
