@@ -10,6 +10,7 @@ import Registro from './Pages/Registro';
 import Perfil from './Pages/Perfil';
 import TestarIA from './components/IdentificarAnimais/IdentificarAnimais';
 
+
 const App = () => {
     return (
         <Router>
