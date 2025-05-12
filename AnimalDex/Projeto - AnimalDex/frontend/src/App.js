@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import AnimalDexZerada from './Pages/AnimalDex_zerada';
+import AnimalDex from './Pages/AnimalDex';
 import Explorar from './Pages/Explorar';
 import HomeInicio from './Pages/HomeBemVindo';
 import HomeUser from './Pages/HomeUser';
@@ -21,9 +22,9 @@ const App = () => {
                 <Route path="/login" element={<Login />} /> 
                 <Route path="/registro" element={<Registro />} /> 
                 <Route path="/home-user" element={<HomeUser />} /> {/* Home logada */}
-                <Route path="/perfil" element={<Perfil />} /> {/* Home logada */}
+                <Route path="/perfil" element={<Perfil />} /> {/* Perfil */}
+                <Route path="/animaldex" element={<AnimalDex />} /> {/* Perfil */}
                 <Route path="/testar-ia" element={<TestarIA />} />
-                {/* <Route path="/home-user" element={<HomeUser />} /> */}
             </Routes>
         </Router>
     );
