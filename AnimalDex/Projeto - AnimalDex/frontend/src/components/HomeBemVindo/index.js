@@ -7,7 +7,7 @@ const HomeBemVindo = () => {
         <div className="body-HomeBemvindo">
             <div className="top-bar-HomeBemvindo">
                 <div className="logo-HomeBemvindo">
-                    <img src={require('../../assets/LogoSENAC.png')} className='img-HomeBemvindo' alt="Logo" />
+                    <img src={require('../../assets/logo.png')} className='img-HomeBemvindo' alt="Logo" />
                 </div>
                 <Link to="/login" className='btn-HomeBemvindo'>Login</Link>
             </div>
