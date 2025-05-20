@@ -24,7 +24,7 @@ const App = () => {
                 <Route path="/home-user" element={<HomeUser />} /> {/* Home logada */}
                 <Route path="/perfil" element={<Perfil />} /> {/* Perfil */}
                 <Route path="/animaldex" element={<AnimalDex />} /> {/* Perfil */}
-                <Route path="/testar-ia" element={<TestarIA />} />
+                <Route path="/identificar" element={<TestarIA />} />
             </Routes>
         </Router>
     );

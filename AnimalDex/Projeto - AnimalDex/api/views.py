@@ -68,7 +68,7 @@ class ViewIdentificacaoAnimal(APIView):
         if not nome_animal:
             return Response({'error': 'Não foi possível identificar o animal.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        animal = Animais.objects.filter(nome=nome_animal).first()
+        animal = Animais.objects.filter(nome_cientifico=nome_animal).first()
         if not animal:
             return Response({'error': f'O animal identificado ({nome_animal}) não está registrado.'}, status=status.HTTP_404_NOT_FOUND)
 
