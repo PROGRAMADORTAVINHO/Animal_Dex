@@ -1,6 +1,3 @@
-# ------------------------------------------ #
-# Arquivo com o modelo e lógica da IA - A FAZER!
-# ------------------------------------------ #
 import torch
 from torchvision import transforms
 from PIL import Image

@@ -1,7 +1,9 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
+from .models import Animais, PerfilUsuario, Identificacao
 
-
+# ------------------------------------------------------------------------------- #
 # Serializador do Usuário
 class UserSerializer(serializers.ModelSerializer):
     senha = serializers.CharField(write_only=True)
@@ -11,37 +13,58 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['first_name', 'last_name', 'username', 'senha', 'email']
 
     def create(self, validated_data):
+        # Cria o usuário
         usuario = User.objects.create_user(
-            first_name=validated_data['first_name'],  # Nome
-            last_name=validated_data['last_name'],    # Sobrenome
-            username=validated_data['username'],      # Nome de usuário
-            password=validated_data['senha'],         # Senha
-            email=validated_data.get('email', ''),    # Email
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name'],
+            username=validated_data['username'],
+            password=validated_data['senha'],
+            email=validated_data.get('email', ''),
         )
+
+        # Cria o perfil do usuário (xp e nível)
+        #PerfilUsuario.objects.create(user=usuario)
+
+        # Gera token de autenticação
+        Token.objects.create(user=usuario)
+
         return usuario
+    
+    def validate_username(self, value):
+        if User.objects.filter(username=value).exists():
+            raise serializers.ValidationError("Este nome de usuário já está em uso.")
+        return value
+
 
 # ------------------------------------------------------------------------------- #
-
 # Serializador dos Animais
-from .models import Animais
-
 class AnimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Animais
-        fields = ['nome', 'especie', 'nivel_perigo', 'nivel_extincao', 'descricao']
+        fields = ['id', 'nome_cientifico', 'nome_comum', 'nivel_perigo', 'nivel_extincao', 'descricao']
 
 # ------------------------------------------------------------------------------- #
-
-# Serializador para o Perfil de Usuário
-from .models import PerfilUsuario, FotosAnimais
-from django.contrib.auth.models import User
-
+# Serializador do Perfil do Usuário (XP e Nível)
 class PerfilUsuarioSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'first_name']  # Adicione outros campos personalizados aqui
+    username = serializers.CharField(source='user.username', read_only=True)
+    email = serializers.EmailField(source='user.email', read_only=True)
+    nome = serializers.CharField(source='user.first_name', read_only=True)
 
-class FotosAnimaisSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = FotosAnimais
-        fields = ['id', 'foto', 'animal', 'criado_em']
+        model = PerfilUsuario
+        fields = ['username', 'email', 'nome', 'xp', 'nivel']
+
+# ------------------------------------------------------------------------------- #
+# Serializador das Identificações (Almanaque do usuário)
+from rest_framework.reverse import reverse
+
+class IdentificacaoSerializer(serializers.ModelSerializer):
+    animal = AnimalSerializer(read_only=True)
+    imagem = serializers.ImageField(use_url=True, read_only=True)
+    data_identificacao = serializers.DateTimeField(format="%d/%m/%Y %H:%M", read_only=True)
+    usuario = serializers.CharField(source='user.username', read_only=True)
+
+    class Meta:
+        model = Identificacao
+        fields = ['id', 'animal', 'imagem', 'data_identificacao']

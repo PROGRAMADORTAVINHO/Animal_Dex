@@ -8,7 +8,7 @@ from torch.utils.data import DataLoader
 DATASET_DIR = "Dataset/animals"  # Caminho para o dataset
 MODEL_SAVE_PATH = "animal_classifier.pth"  # Salva o modelo na pasta atual
 BATCH_SIZE = 32
-EPOCHS = 10
+EPOCHS = 20
 LEARNING_RATE = 0.001
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
