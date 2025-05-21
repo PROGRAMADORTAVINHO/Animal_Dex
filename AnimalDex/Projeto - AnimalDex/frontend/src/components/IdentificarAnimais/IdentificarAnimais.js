@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Adicione esta linha
 import './style.css';
 
 const TestarIA = () => {
@@ -84,6 +85,10 @@ const TestarIA = () => {
         <div className="body-Home-User">
             <div className="espaco-HomeUser"></div>
             <div className="container-HomeUser">
+                {/* Botão de voltar para Home */}
+                <div className="top-bar">
+                    <Link to="/home-user" className="back-button">← Voltar para Home</Link>
+                </div>
                 {/* Card de Upload */}
                 <div className="card-ia">
                     <h1 className="h1-cardUser">Identificar Animal</h1>
@@ -107,17 +112,7 @@ const TestarIA = () => {
                     {erro && <p className="error-ia">{erro}</p>}
                 </div>
 
-                {/* Card de Pré-visualização */}
-                {fotoPreview && (
-                    <div className="card-ia">
-                        <h2 className="h2-modal">Pré-visualização</h2>
-                        <img
-                            src={fotoPreview}
-                            alt="Pré-visualização"
-                            className="preview-ia"
-                        />
-                    </div>
-                )}
+                
 
                 {/* Card de Resultado */}
                 {resultado && (

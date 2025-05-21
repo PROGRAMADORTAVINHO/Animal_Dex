@@ -8,9 +8,10 @@ const HomeUser_logada = () => {
     const modalRef = useRef(null);
     const [user, setUser] = useState(null);
     const [error, setError] = useState('');
+    const [ultimasCapturas, setUltimasCapturas] = useState([]);
     const navigate = useNavigate();
 
-    // Lógica para buscar dados do usuário
+    // Buscar dados do usuário
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -18,21 +19,27 @@ const HomeUser_logada = () => {
         } else {
             axios
                 .get('http://127.0.0.1:8000/api/perfil/', {
-                    headers: {
-                        Authorization: `Token ${token}`,
-                    },
+                    headers: { Authorization: `Token ${token}` },
                 })
-                .then(response => {
-                    console.log('Resposta do perfil:', response.data);
-                    setUser(response.data);
-                })
-                .catch(err => {
-                    console.error('Erro ao carregar perfil:', err.response ? err.response.data : err.message);
+                .then(response => setUser(response.data))
+                .catch(() => {
                     setError('Erro ao carregar perfil');
                     setUser(null);
                 });
         }
     }, [navigate]);
+
+    // Buscar últimas capturas
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+        axios
+            .get('http://127.0.0.1:8000/api/perfil/identificacoes/?page_size=3', {
+                headers: { Authorization: `Token ${token}` },
+            })
+            .then(response => setUltimasCapturas(response.data.results || response.data))
+            .catch(() => setUltimasCapturas([]));
+    }, []);
 
     // Lógica do modal
     useEffect(() => {
@@ -60,6 +67,13 @@ const HomeUser_logada = () => {
         };
     }, []);
 
+    const getTituloNivel = (nivel) => {
+        if (nivel >= 20) return "Pesquisador";
+        if (nivel > 10) return "Colecionador";
+        if (nivel > 5) return "Aventureiro";
+        return "Iniciante";
+    };
+
     return (
         <>
             <div id="explorarModal" className="modal" ref={modalRef}>
@@ -77,26 +91,64 @@ const HomeUser_logada = () => {
                 <div className="container-HomeUser">
                     <div className="cardUser">
                         <h1 className="h1-cardUser">
-                            {user && user.first_name
-                                ? `Bem-vindo de volta, ${user.first_name}!`
-                                : 'Carregando...'}
+                            {error
+                                ? 'Erro ao carregar perfil'
+                                : user && user.username
+                                    ? `Bem-vindo de volta, ${user.username}!`
+                                    : 'Carregando...'}
                         </h1>
                         <p className="p-cardUser">Continue sua jornada de descobertas no mundo animal.</p>
                         {error && <p className="error">{error}</p>}
                     </div>
 
+                    {/* NOVO CARD DE LINK PARA MINHA COLEÇÃO */}
+                    <Link to="/animaldex" className="cardMinhaColecao">
+                        <div className="icon-minha-colecao">📚</div>
+                        <div>
+                            <h3 className="h3-minha-colecao">Minha Coleção</h3>
+                            <p className="p-minha-colecao">Veja todos os animais que você já identificou!</p>
+                        </div>
+                    </Link>
+
                     <div className="statusUser">
                         <div className="descobertas">
                             <div className="icon-descobertas"> 🌟 </div>
                             <div className="content-descobertas">
-                                <h3 className="h3-content-descobertas"> 0 </h3>
+                                <h3 className="h3-content-descobertas">
+                                    {user && user.animais_descobertos !== undefined
+                                        ? user.animais_descobertos
+                                        : 0}
+                                </h3>
                                 <p className="p-h3-content-descobertas"> Animais Descobertos </p>
                             </div>
                         </div>
                         <div className="level">
                             <div className="icon-level"> 🏆 </div>
-                            <h3 className="h3-level"> Iniciante </h3>
-                            <p className="p-level"> Seu nível </p>
+                            <p className="p-level" style={{ marginTop: 10, marginBottom: 5 }}>
+                                {getTituloNivel(Number(user && (user.nivel || user.nivel_atual) || 0))}
+                            </p>
+                            <h3 className="h3-level" style={{ margin: 0 }}>
+                                {user && (user.nivel || user.nivel_atual) ? (user.nivel || user.nivel_atual) : '0'}
+                            </h3>
+                            <div className="xp-bar-container">
+                                <div
+                                    className="xp-bar"
+                                    style={{
+                                        width: user && user.xp !== undefined && user.xp_para_proximo_nivel
+                                            ? `${Math.max(8, Math.min(100, Math.round((user.xp / user.xp_para_proximo_nivel) * 100)))}%`
+                                            : '8%',
+                                        position: 'relative',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    <span className="xp-bar-text">
+                                        XP: {user && user.xp ? user.xp : 0}
+                                        {user && user.xp_para_proximo_nivel ? ` / ${user.xp_para_proximo_nivel}` : ''}
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -105,10 +157,12 @@ const HomeUser_logada = () => {
                             <h2 className="h2-explorar-capturar"> Explorar Animal </h2>
                             <p className="p-explorar-capturar"> Descubra novos animais e aprenda mais sobre eles </p>
                         </div>
-                        <div className="capturar">
-                            <h2 className="h2-explorar-capturar"> Capturar Animal </h2>
-                            <p className="p-explorar-capturar"> Encontre e capture novos animais para sua coleção </p>
-                        </div>
+                        <Link to="/identificar" className="capturar-link" style={{ textDecoration: 'none' }}>
+                            <div className="capturar">
+                                <h2 className="h2-explorar-capturar"> Capturar Animal </h2>
+                                <p className="p-explorar-capturar"> Encontre e capture novos animais para sua coleção </p>
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="sesao2">
@@ -116,7 +170,7 @@ const HomeUser_logada = () => {
                             <h2 className="h2-extincao"> Espécies em Risco </h2>
                             <div className="animal-extincao">
                                 <div className="icon-animal">
-                                    <div className="icon-extincao">🐆</div>
+                                    <img src={require('../../assets/onca_pintada.jpg')} className="icon-extincao" alt="Onça-pintada" />
                                     <div className="animal-extincao-content">
                                         <h3 className="h3-secao2">Onça-pintada</h3>
                                         <p className="p-secao2"> Vulnerável </p>
@@ -129,7 +183,7 @@ const HomeUser_logada = () => {
 
                             <div className="animal-extincao">
                                 <div className="icon-animal">
-                                    <div className="icon-extincao">🦜</div>
+                                    <img src={require('../../assets/arara_azul.jpg')} className="icon-extincao" alt="Arara-azul" />
                                     <div className="animal-extincao-content">
                                         <h3 className="h3-secao2"> Arara-azul </h3>
                                         <p className="p-secao2"> Em perigo </p>
@@ -142,7 +196,7 @@ const HomeUser_logada = () => {
 
                             <div className="animal-extincao">
                                 <div className="icon-animal">
-                                    <div className="icon-extincao">🐋</div>
+                                    <img src={require('../../assets/peixe_boi.webp')} className="icon-extincao" alt="Peixe-boi" />
                                     <div className="animal-extincao-content">
                                         <h3 className="h3-secao2"> Peixe-boi </h3>
                                         <p className="p-secao2"> Criticamente em perigo </p>
@@ -217,15 +271,34 @@ const HomeUser_logada = () => {
                     </div>
 
                     <div className="RecentActivities">
-                        <h3>Capturas Recentes</h3>
+                        <h3>Últimos Animais Identificados</h3>
                         <div className="Activities">
-                            <div className="CapturedAnimal">
-                                <img src={require('../../assets/capivara.jpg')} className="ImgAnimal" />
-                            </div>
-                            <div className="content-RecentActivities">
-                                <h3 className="h3-RecentActivities">Capivara</h3>
-                                <p className="p-RecentActivities">Hydrochoerus hydrochaeris</p>
-                            </div>
+                            {ultimasCapturas.length === 0 ? (
+                                <p className="p-RecentActivities">Você ainda não identificou nenhum animal.</p>
+                            ) : (
+                                ultimasCapturas.slice(0, 3).map((captura, idx) => (
+                                    <div className="CapturedAnimal" key={idx}>
+                                        <img
+                                            src={
+                                                captura.imagem
+                                                    ? (captura.imagem.startsWith('http')
+                                                        ? captura.imagem
+                                                        : `http://127.0.0.1:8000${captura.imagem}`)
+                                                    : "https://via.placeholder.com/100"
+                                            }
+                                            className="ImgAnimal"
+                                            alt={captura.animal?.nome_comum || 'Animal'}
+                                        />
+                                        <div className="content-RecentActivities">
+                                            <h3 className="h3-RecentActivities">{captura.animal?.nome_comum}</h3>
+                                            <p className="p-RecentActivities">{captura.animal?.nome_cientifico}</p>
+                                            <p className="p-RecentActivities">
+                                                {captura.data_identificacao}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
                         </div>
                     </div>
                 </div>

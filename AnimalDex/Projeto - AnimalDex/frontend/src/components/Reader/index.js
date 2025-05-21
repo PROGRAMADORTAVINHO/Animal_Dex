@@ -44,7 +44,7 @@ const Reader = () => {
         <div className="body-reader">
             <div className="top-bar-reader">
                 <div className="logo">
-                    <img src={require('../../assets/LogoSENAC.png')} className="img-reader" alt="Logo" />
+                    <img src={require('../../assets/logo.png')} className="img-reader" alt="Logo" />
                 </div>
                 <div className="usuario-reader">
                     {error && <p className="error">{error}</p>}

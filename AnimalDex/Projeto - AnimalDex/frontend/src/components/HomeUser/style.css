@@ -9,99 +9,24 @@
     background-color: red;
 }
 
-.top-bar-reader{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.top-bar-reader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 100;
     background-color: white;
-    padding: 10px 20px;
-    color: black;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    width: 100px;
-    padding: 5px 10px;
-}
 
-.logo .img-reader {
-    width: 100%;
-    padding: 5px 10px;
-}
 
-.usuario-reader {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.user-icon {
-    width: 40px;
-    height: 40px;
-    background-color: blue;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.dropdown-menu {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    width: 180px;
-    display: none;  /* Escondido por padrão */
-    flex-direction: column;
-    z-index: 1000;
-}
-
-.dropdown-menu .ul-reader {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.dropdown-menu .ul-reader .li-reader {
-    padding: 10px;
-}
-
-.dropdown-menu .ul-reader .li-reader:last-child {
-    border-bottom: none;
-}
-
-/* Links do dropdown */
-.dropdown-menu .ul-reader .li-reader .itens {
-    text-decoration: none;
-    color: black;
-    display: block;
-}
-
-/* Efeito hover nos itens do menu */
-.dropdown-menu .ul-reader .li-reader:hover {
-    background: #f0f0f0;
-}
-
-/* Exibir o menu ao passar o mouse */
-.usuario-reader:hover .dropdown-menu {
-    display: block;  /* Aqui garantimos que o menu apareça */
-}
-
-.body-Home-User{
+.body-Home-User {
+    padding-top: 60px; /* mantém o espaço para o header fixo */
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
     margin: 0;
-    padding: 0;
 }
 
 .container-HomeUser {
@@ -128,11 +53,12 @@
     color: #666;
 }
 
+/* ----------- STATUS USER E CARDS ----------- */
 .statusUser {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
-    height: 190px;
+    height: 210px;
 }
 
 .descobertas, .level {
@@ -141,6 +67,10 @@
     flex: 1;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-descobertas, .icon-level {
@@ -151,7 +81,11 @@
 
 .content-descobertas{
     margin-top: 20px;
-    margin-left: 2%;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .h3-content-descobertas {
@@ -170,17 +104,34 @@
     font-size: 1em;
 }
 
+/* ----------- EXPLORAR E CAPTURAR ----------- */
 .explorar-capturar {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-.explorar, .capturar {
-    flex: 1;
-    padding: 15px;
-    color: white;
+.explorar,
+.capturar-link {
+    flex: 1 1 0;
+    display: flex;
+    min-width: 0;
+}
+
+.capturar-link {
+    text-decoration: none;
+    height: auto;
+}
+
+.capturar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border-radius: 10px;
+    background: #28a745;
+    color: white;
+    padding: 15px;
 }
 
 .h2-explorar-capturar{
@@ -195,12 +146,56 @@
 
 .explorar { 
     background: #007bff; 
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
 }
 
-.capturar { 
-    background: #28a745; 
+/* ----------- XP BAR ----------- */
+.xp-bar-container {
+    width: 90%;
+    height: 14px;
+    background: #e0e0e0;
+    border-radius: 7px;
+    margin: 12px 0 6px 0;
+    overflow: hidden;
+    position: relative;
 }
 
+.xp-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #3B82F6 60%, #28a745 100%);
+    border-radius: 7px;
+    transition: width 0.5s;
+    min-width: 32px;
+    position: relative;
+}
+
+.xp-bar-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222;
+    font-weight: bold;
+    font-size: 0.95em;
+    width: 100%;
+    text-align: center;
+    text-shadow: 0 1px 4px rgba(255,255,255,0.4);
+    white-space: nowrap;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ----------- RESTANTE DO LAYOUT ----------- */
 .sesao2 {
     display: flex;
     justify-content: space-around;
@@ -355,45 +350,79 @@
     margin: 0;
 }
 
+/* Seção de atividades recentes */
 .RecentActivities {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 24px 32px;
     width: 100%;
-    margin: 20px auto;
+    margin: 32px auto 0 auto;
+}
+
+.RecentActivities h3 {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 18px;
+    font-weight: bold;
 }
 
 .Activities {
-    margin-top: 10px;
-    border: solid 1px rgba(0, 0, 0, 0.13);
-    border-radius: 5px;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.CapturedAnimal {
     display: flex;
     align-items: center;
+    background: #f7faff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 16px 18px;
+    transition: box-shadow 0.2s;
+}
+
+.CapturedAnimal:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    background: #eaf3ff;
 }
 
 .ImgAnimal {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #007bff;
+    background: #fff;
 }
 
 .content-RecentActivities {
-    margin-left: 15px;
+    margin-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .h3-RecentActivities {
-    margin: 0;
     font-size: 18px;
-    color: #333;
+    color: #007bff;
+    margin: 0;
+    font-weight: bold;
 }
 
 .p-RecentActivities {
-    margin: 5px 0 0;
+    margin: 0;
     font-size: 14px;
-    color: #666;
+    color: #555;
+}
+
+.p-RecentActivities:last-child {
+    color: #888;
+    font-size: 13px;
 }
 
 .espaco-HomeUser {
@@ -451,4 +480,61 @@
 
 .btn-modal:hover {
     background-color: #0056b3;
+}
+
+.btn-minha-colecao-pequeno {
+    display: inline-block;
+    margin-top: 12px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 16px;
+    font-size: 0.98em;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.btn-minha-colecao-pequeno:hover {
+    background: #0056b3;
+}
+
+.cardMinhaColecao {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 18px 24px;
+    margin: 18px 0 28px 0;
+    text-decoration: none;
+    transition: box-shadow 0.2s, background 0.2s;
+    cursor: pointer;
+}
+.cardMinhaColecao:hover {
+    background: #e2e6ea;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+.icon-minha-colecao {
+    font-size: 2.2em;
+    background: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.h3-minha-colecao {
+    margin: 0 0 4px 0;
+    font-size: 1.25em;
+    color: #007bff;
+}
+.p-minha-colecao {
+    margin: 0;
+    color: #333;
+    font-size: 1em;
 }

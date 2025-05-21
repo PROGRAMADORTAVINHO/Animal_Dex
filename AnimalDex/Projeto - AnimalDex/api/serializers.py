@@ -49,11 +49,28 @@ class PerfilUsuarioSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
     email = serializers.EmailField(source='user.email', read_only=True)
     nome = serializers.CharField(source='user.first_name', read_only=True)
-
+    xp_para_proximo_nivel = serializers.SerializerMethodField()
+    animais_descobertos = serializers.SerializerMethodField()
 
     class Meta:
         model = PerfilUsuario
-        fields = ['username', 'email', 'nome', 'xp', 'nivel']
+        fields = [
+            'username', 'email', 'nome', 'xp', 'nivel', 'xp_para_proximo_nivel',  # seus campos atuais
+            'animais_descobertos',
+        ]
+
+    def get_xp_para_proximo_nivel(self, obj):
+        return obj.xp_para_proximo_nivel()
+
+    def get_animais_descobertos(self, obj):
+        # Conta quantos animais únicos o usuário identificou
+        return (
+            Identificacao.objects
+            .filter(usuario=obj.user)
+            .values('animal')
+            .distinct()
+            .count()
+        )
 
 # ------------------------------------------------------------------------------- #
 # Serializador das Identificações (Almanaque do usuário)
@@ -67,4 +84,4 @@ class IdentificacaoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Identificacao
-        fields = ['id', 'animal', 'imagem', 'data_identificacao']
+        fields = ['id', 'animal', 'imagem', 'data_identificacao', 'usuario']

@@ -7,7 +7,7 @@ const AnimalDex = () => {
         <>
             <div class="body_minhacolecao">
                 <div class="top-bar-minha-colecao">
-                <Link to="/" class="back-button">← Voltar</Link>
+                <Link to="/home-user" class="back-button">← Voltar</Link>
                     <div class="title_reader">Minha Coleção</div>
                 </div>
 

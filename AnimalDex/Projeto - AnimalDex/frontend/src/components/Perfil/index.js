@@ -7,7 +7,7 @@ const PerfilCard = () => {
     return (
         <div className="body-perfil">
             <div className="top-bar-perfil">
-                <Link to="/" className="back-button-perfil">← Voltar</Link>
+                <Link to="/home-user" className="back-button-perfil">← Voltar</Link>
                 <div className="title_reader">Perfil</div>
             </div>
 

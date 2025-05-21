@@ -7,7 +7,7 @@ const AnimalDexZerada = () => {
     return (
         <div className="body-animaldex-zerada">
             <div class="top-bar">
-                <Link to="/" className="back-button">← Voltar</Link>
+                <Link to="/home-user" className="back-button">← Voltar</Link>
                 <h1 className='h1-animaldex-zerada'>Minha Coleção</h1>
             </div>
 

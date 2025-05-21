@@ -6,7 +6,7 @@ const ExplorarCard = () => {
     return (
         <div className="body-explorar">
             <div class="top-bar-explorar">
-                <Link to="/" class="back-button">← Voltar</Link>
+                <Link to="/home-user" class="back-button">← Voltar</Link>
                 <div class="title_reader">Minha Coleção</div>
             </div>
 

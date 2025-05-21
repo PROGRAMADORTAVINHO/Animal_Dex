@@ -15,6 +15,7 @@ Equus ferus caballus
 Felis catus
 Gorilla gorilla
 Heterocera
+Hydrochoerus hydrochaeris
 Lepidoptera larvae
 Mus musculus
 Pan troglodytes
