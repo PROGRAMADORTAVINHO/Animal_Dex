@@ -4,37 +4,63 @@ import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
+const getTituloNivel = (nivel) => {
+  if (nivel >= 20) return "Pesquisador";
+  if (nivel > 10) return "Colecionador";
+  if (nivel > 5) return "Aventureiro";
+  return "Iniciante";
+};
+
 export default function HomeUser() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [error, setError] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [busca, setBusca] = useState('');
+  const [ultimasCapturas, setUltimasCapturas] = useState([]);
 
   useEffect(() => {
     const fetchUser = async () => {
-      const token = await AsyncStorage.getItem('token'); // Recupera o token do AsyncStorage
+      const token = await AsyncStorage.getItem('token');
       if (!token) {
-        router.replace('/Login'); // Redireciona para a página de login se o token não existir
+        router.replace('/Login');
         return;
       }
-
       try {
-        const response = await axios.get('http://192.168.0.106:8000/api/Perfil/', {
-          headers: { Authorization: `Token ${token}` }, // Envia o token no cabeçalho
+        const response = await axios.get('http://192.168.0.106:8000/api/perfil/', {
+          headers: { Authorization: `Token ${token}` },
         });
         setUser(response.data);
+        setError(''); // Limpa o erro ao carregar com sucesso
       } catch (err) {
         setError('Erro ao carregar perfil');
         setUser(null);
       }
     };
 
+    const fetchCapturas = async () => {
+      const token = await AsyncStorage.getItem('token');
+      if (!token) return;
+      try {
+        const response = await axios.get('http://192.168.0.106:8000/api/perfil/identificacoes/?page_size=3', {
+          headers: { Authorization: `Token ${token}` },
+        });
+        // Ordena por data mais recente
+        const capturasOrdenadas = (response.data.results || response.data)
+          .sort((a, b) => new Date(b.data_identificacao) - new Date(a.data_identificacao));
+        setUltimasCapturas(capturasOrdenadas.slice(0, 3));
+      } catch (err) {
+        setUltimasCapturas([]);
+      }
+    };
+
     fetchUser();
+    fetchCapturas();
   }, []);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      {/* Modal Explorar */}
       <Modal visible={modalVisible} transparent animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
@@ -58,35 +84,77 @@ export default function HomeUser() {
         </View>
       </Modal>
 
+      {/* Bem-vindo e status */}
       <Text style={styles.welcome}>
-        {user?.first_name ? `Bem-vindo de volta, ${user.first_name}!` : 'Carregando...'}
+        {user?.username
+          ? `Bem-vindo de volta, ${user.username}!`
+          : 'Carregando...'}
       </Text>
       <Text style={styles.subtitle}>Continue sua jornada de descobertas no mundo animal.</Text>
       {error ? <Text style={styles.error}>{error}</Text> : null}
 
+      {/* Minha Coleção */}
+      <TouchableOpacity
+        style={styles.collectionBox}
+        onPress={() => router.push('/AnimalDex')}
+      >
+        <Text style={styles.collectionIcon}>📚</Text>
+        <View>
+          <Text style={styles.collectionTitle}>Minha Coleção</Text>
+          <Text style={styles.collectionText}>Veja todos os animais que você já identificou!</Text>
+        </View>
+      </TouchableOpacity>
+
+      {/* Status do usuário */}
       <View style={styles.statusContainer}>
         <View style={styles.statusBox}>
           <Text style={styles.statusIcon}>🌟</Text>
-          <Text style={styles.statusNumber}>0</Text>
+          <Text style={styles.statusNumber}>
+            {user?.animais_descobertos !== undefined ? user.animais_descobertos : 0}
+          </Text>
           <Text style={styles.statusLabel}>Animais Descobertos</Text>
         </View>
         <View style={styles.statusBox}>
           <Text style={styles.statusIcon}>🏆</Text>
-          <Text style={styles.statusNumber}>Iniciante</Text>
-          <Text style={styles.statusLabel}>Seu nível</Text>
+          <Text style={styles.statusNumber}>
+            {user?.nivel || user?.nivel_atual || 0}
+          </Text>
+          <Text style={styles.statusLabel}>{getTituloNivel(Number(user?.nivel || user?.nivel_atual || 0))}</Text>
         </View>
       </View>
 
-      <TouchableOpacity style={styles.actionBox} onPress={() => setModalVisible(true)}>
-        <Text style={styles.actionTitle}>Explorar Animal</Text>
-        <Text style={styles.actionText}>Descubra novos animais e aprenda mais sobre eles</Text>
-      </TouchableOpacity>
+      {/* Barra de XP */}
+      <View style={styles.xpBarContainer}>
+        <View
+          style={[
+            styles.xpBar,
+            {
+              width:
+                user && user.xp !== undefined && user.xp_para_proximo_nivel
+                  ? `${Math.max(8, Math.min(100, Math.round((user.xp / user.xp_para_proximo_nivel) * 100)))}%`
+                  : '8%',
+            },
+          ]}
+        />
+        <Text style={styles.xpBarText}>
+          XP: {user?.xp || 0}
+          {user?.xp_para_proximo_nivel ? ` / ${user.xp_para_proximo_nivel}` : ''}
+        </Text>
+      </View>
 
-      <TouchableOpacity style={styles.actionBox} onPress={() => router.push('/CadastroAnimais')}>
-        <Text style={styles.actionTitle}>Capturar Animal</Text>
-        <Text style={styles.actionText}>Encontre e capture novos animais para sua coleção</Text>
-      </TouchableOpacity>
+      {/* Explorar/Capturar */}
+      <View style={styles.actionsRow}>
+        <TouchableOpacity style={styles.actionBox} onPress={() => router.push('/Explorar')}>
+          <Text style={styles.actionTitle}>Explorar Animal</Text>
+          <Text style={styles.actionText}>Descubra novos animais e aprenda mais sobre eles</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.actionBox} onPress={() => router.push('/Identificar')}>
+          <Text style={styles.actionTitle}>Capturar Animal</Text>
+          <Text style={styles.actionText}>Encontre e capture novos animais para sua coleção</Text>
+        </TouchableOpacity>
+      </View>
 
+      {/* Espécies em risco */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Espécies em Risco</Text>
         {[
@@ -105,6 +173,7 @@ export default function HomeUser() {
         ))}
       </View>
 
+      {/* Evento da Natureza */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Evento da Natureza</Text>
         <Text>🐋 Migração das baleias jubarte – Junho a Novembro</Text>
@@ -112,6 +181,7 @@ export default function HomeUser() {
         <Text>🦩 Reprodução dos flamingos – Agosto a Outubro</Text>
       </View>
 
+      {/* Habitat da Semana */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Habitat da Semana</Text>
         <Image source={require('../assets/images/pantanal.jpg')} style={styles.image} />
@@ -119,6 +189,7 @@ export default function HomeUser() {
         <Text>Espécies típicas: Onça-pintada, Arara-azul, Jacaré</Text>
       </View>
 
+      {/* Curiosidade do Dia */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Curiosidade do Dia</Text>
         <Image source={require('../assets/images/tiger.jpg')} style={styles.image} />
@@ -127,15 +198,51 @@ export default function HomeUser() {
         </Text>
       </View>
 
+      {/* Últimos Animais Identificados */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Capturas Recentes</Text>
-        <View style={styles.speciesCard}>
-          <Image source={require('../assets/images/capivara.jpg')} style={styles.avatar} />
-          <View>
-            <Text>Capivara</Text>
-            <Text>Hydrochoerus hydrochaeris</Text>
-          </View>
-        </View>
+        <Text style={styles.sectionTitle}>Últimos Animais Identificados</Text>
+        {ultimasCapturas.length === 0 ? (
+          <Text style={styles.sectionText}>Você ainda não identificou nenhum animal.</Text>
+        ) : (
+          ultimasCapturas.map((captura, idx) => {
+            // Corrige datas para formatos ISO e exibe corretamente
+            let dataFormatada = '';
+            if (captura.data_identificacao) {
+              let dataStr = captura.data_identificacao;
+              // Tenta corrigir para formato ISO
+              if (!dataStr.includes('T')) {
+                dataStr = dataStr.replace(' ', 'T');
+              }
+              // Garante que termina com 'Z' para UTC se não tiver fuso
+              if (!dataStr.endsWith('Z') && !/[+-]\d{2}:?\d{2}$/.test(dataStr)) {
+                dataStr += 'Z';
+              }
+              const dataObj = new Date(dataStr);
+              dataFormatada = isNaN(dataObj.getTime())
+                ? captura.data_identificacao
+                : dataObj.toLocaleString('pt-BR');
+            }
+            return (
+              <View key={idx} style={styles.speciesCard}>
+                <Image
+                  source={
+                    captura.imagem
+                      ? { uri: captura.imagem.startsWith('http') ? captura.imagem : `http://192.168.0.106:8000${captura.imagem}` }
+                      : { uri: 'https://via.placeholder.com/100x100?text=Animal' }
+                  }
+                  style={styles.avatar}
+                />
+                <View>
+                  <Text style={styles.speciesName}>{captura.animal?.nome_comum}</Text>
+                  <Text>{captura.animal?.nome_cientifico}</Text>
+                  <Text style={styles.speciesCount}>
+                    {dataFormatada}
+                  </Text>
+                </View>
+              </View>
+            );
+          })
+        )}
       </View>
     </ScrollView>
   );
@@ -146,21 +253,68 @@ const styles = StyleSheet.create({
   welcome: { fontSize: 22, fontWeight: 'bold', marginBottom: 5 },
   subtitle: { fontSize: 14, color: '#666', marginBottom: 10 },
   error: { color: 'red' },
+  collectionBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f8f9fa',
+    borderRadius: 18,
+    padding: 18,
+    marginBottom: 18,
+    elevation: 2
+  },
+  collectionIcon: { fontSize: 22, marginRight: 14 },
+  collectionTitle: { fontSize: 18, fontWeight: 'bold', color: '#007bff' },
+  collectionText: { color: '#333', fontSize: 14 },
   statusContainer: { flexDirection: 'row', justifyContent: 'space-around', marginVertical: 20 },
   statusBox: { alignItems: 'center' },
   statusIcon: { fontSize: 30 },
   statusNumber: { fontSize: 20, fontWeight: 'bold' },
   statusLabel: { fontSize: 12, color: '#555' },
+  xpBarContainer: {
+    width: '90%',
+    height: 14,
+    backgroundColor: '#e0e0e0',
+    borderRadius: 7,
+    marginVertical: 12,
+    alignSelf: 'center',
+    overflow: 'hidden',
+    position: 'relative'
+  },
+  xpBar: {
+    height: 14,
+    backgroundColor: '#3B82F6',
+    borderRadius: 7,
+    position: 'absolute',
+    left: 0,
+    top: 0
+  },
+  xpBarText: {
+    position: 'absolute',
+    width: '100%',
+    textAlign: 'center',
+    color: '#222',
+    fontWeight: 'bold',
+    fontSize: 11,
+    zIndex: 2
+  },
+  actionsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 15,
+    gap: 10
+  },
   actionBox: {
     backgroundColor: '#E0F7FA',
     padding: 15,
-    marginBottom: 15,
-    borderRadius: 10
+    borderRadius: 10,
+    flex: 1,
+    marginHorizontal: 2
   },
-  actionTitle: { fontSize: 18, fontWeight: 'bold' },
-  actionText: { fontSize: 14, color: '#333' },
+  actionTitle: { fontSize: 16, fontWeight: 'bold' },
+  actionText: { fontSize: 13, color: '#333' },
   section: { marginTop: 25 },
   sectionTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 10 },
+  sectionText: { fontSize: 14, color: '#888', marginBottom: 10 },
   speciesCard: { flexDirection: 'row', alignItems: 'center', marginBottom: 10 },
   speciesEmoji: { fontSize: 30, marginRight: 10 },
   speciesName: { fontWeight: 'bold' },

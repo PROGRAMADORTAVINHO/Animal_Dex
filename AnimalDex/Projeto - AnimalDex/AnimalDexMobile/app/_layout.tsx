@@ -7,7 +7,7 @@ export default function RootLayout() {
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="Login" />
       <Stack.Screen name="HomeUser" />
-      <Stack.Screen name="CadastroAnimais" />
+      <Stack.Screen name="Identificar" />
       <Stack.Screen name="ListaAnimais" />
       <Stack.Screen name="Perfil" />
       <Stack.Screen name="EditarPerfil" />
