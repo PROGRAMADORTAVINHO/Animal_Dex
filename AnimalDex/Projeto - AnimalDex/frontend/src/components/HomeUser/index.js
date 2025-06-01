@@ -153,10 +153,10 @@ const HomeUser_logada = () => {
                     </div>
 
                     <div className="explorar-capturar">
-                        <div className="explorar" ref={explorarRef}>
+                        <Link to="/explorar" className="explorar" style={{ textDecoration: 'none' }}>
                             <h2 className="h2-explorar-capturar"> Explorar Animal </h2>
                             <p className="p-explorar-capturar"> Descubra novos animais e aprenda mais sobre eles </p>
-                        </div>
+                        </Link>
                         <Link to="/identificar" className="capturar-link" style={{ textDecoration: 'none' }}>
                             <div className="capturar">
                                 <h2 className="h2-explorar-capturar"> Capturar Animal </h2>

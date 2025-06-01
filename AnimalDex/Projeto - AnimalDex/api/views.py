@@ -107,7 +107,7 @@ class AnimalPagination(PageNumberPagination):
 class ViewListaAnimais(generics.ListAPIView):
     queryset = Animais.objects.all()
     serializer_class = AnimalSerializer
-    pagination_class = AnimalPagination
+    pagination_class = None  # <--- Adicione esta linha
 
 # Atualizar animal (admin ou autenticado)
 class ViewAtualizarAnimal(UpdateAPIView):

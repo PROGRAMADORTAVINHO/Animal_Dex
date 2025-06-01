@@ -5,26 +5,28 @@
 }
 
 .body-HomeBemvindo {
-    font-family: Arial, sans-serif;
-    background-color: #F3F5FC;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f6ef 0%, #f7ffe0 100%);
+    min-height: 100vh;
     text-align: center;
 }
 
-/* ------------------------------------ Reader ------------------------------------ */
-
+/* Barra superior */
 .top-bar-HomeBemvindo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
-    padding: 10px 20px;
-    color: black;
+    background: linear-gradient(90deg, #e0e7ef 60%, #f7ffe0 100%);
+    padding: 14px 32px;
+    color: #14532d;
+    border-bottom: 2px solid #b6e388;
+    box-shadow: 0 2px 8px rgba(20, 83, 45, 0.08);
 }
 
 .logo-HomeBemvindo {
     display: flex;
     align-items: center;
-    width: 100px;
+    width: 110px;
     padding: 5px 10px;
 }
 
@@ -37,145 +39,193 @@
     background-color: #3B82F6;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1em;
+    padding: 10px 28px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
     cursor: pointer;
     text-decoration: none;
+    box-shadow: 0 2px 8px #b6e38822;
+    transition: background 0.2s, color 0.2s;
+}
+.top-bar-HomeBemvindo .btn-HomeBemvindo:hover {
+    background: #14532d;
+    color: #fff;
 }
 
+/* Container centralizado */
 .container-HomeBemvindo {
-    width: 80%;
-    margin: auto;
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top: 32px;
 }
 
-/* ------------------------------------ Seção de boas-vindas ------------------------------------ */
+/* Card de boas-vindas */
 .card-start-HomeBemvindo {
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-    height: 35vh;
+    background: #fff;
+    padding: 48px 32px 40px 32px;
+    border-radius: 18px 18px 40px 18px;
+    box-shadow: 0 6px 24px rgba(20, 83, 45, 0.10), 0 1.5px 0 #a3e63511 inset;
+    margin: 24px 0 36px 0;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card-start-HomeBemvindo .h1-cs-HomeBemvindo {
-    margin-bottom: 20px;
-    color: #333;
-    font-size: 2em;
+    margin-bottom: 18px;
+    color: #14532d;
+    font-size: 2.2em;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #fff, 0 2px 8px #b6e38844;
 }
 
 .card-start-HomeBemvindo .p-cs-HomeBemvindo {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     color: #666;
+    font-size: 1.15em;
 }
 
-.card-start-HomeBemvindo .btn-cs-HomeBemvindo, .start-journey .btn-sj-HomeBemvindo {
+.card-start-HomeBemvindo .btn-cs-HomeBemvindo {
     background-color: #3B82F6;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1em;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
     cursor: pointer;
     text-decoration: none;
+    box-shadow: 0 2px 8px #b6e38822;
+    transition: background 0.2s, color 0.2s;
+}
+.card-start-HomeBemvindo .btn-cs-HomeBemvindo:hover {
+    background: #14532d;
+    color: #fff;
 }
 
 /* ----------------------------------- Cards de funcionalidades ----------------------------------- */
 
 .animaldex-items {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: stretch;
+    gap: 24px;
     margin: 40px 0;
-    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .animaldex-items .items-ai-HomeBemvindo {
     background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 50%;
+    padding: 28px 24px;
+    border-radius: 18px 18px 40px 18px;
+    box-shadow: 0 6px 24px rgba(20, 83, 45, 0.10), 0 1.5px 0 #a3e63511 inset;
+    width: 320px;
+    min-width: 220px;
+    max-width: 340px;
     text-align: left;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    transition: box-shadow 0.2s, transform 0.2s;
+    margin: 0;
+}
+
+.animaldex-items .items-ai-HomeBemvindo:hover {
+    box-shadow: 0 12px 32px rgba(20, 83, 45, 0.18), 0 2px 0 #a3e63522 inset;
+    transform: translateY(-6px) scale(1.03);
 }
 
 .icon-ai-HomeBemvindo {
-    margin-top: 10%;
-    margin-bottom: 18%;
-    font-size: 2em;
+    margin-bottom: 18px;
+    font-size: 2.2em;
     align-self: flex-start;
 }
 
 .h2-ai-HomeBemvindo{
-    color: #333;
-    font-size: 1.5em;
-    margin-bottom: 10%;
+    color: #14532d;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .p-ai-HomeBemvindo {
-    text-align: center;
     color: #666;
-    margin-bottom: 10%;
+    font-size: 1em;
+    margin-bottom: 0;
+    text-align: left;
 }
-/* ------------------------------------ Seção de etapas ------------------------------------ */
+
+/* Seção de etapas */
 .steps-HomeBemvindo {
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 40px 18px 32px 18px;
+    border-radius: 18px 18px 40px 18px;
+    box-shadow: 0 6px 24px rgba(20, 83, 45, 0.10), 0 1.5px 0 #a3e63511 inset;
     margin: 40px 0;
 }
 
 .steps-HomeBemvindo .h1-steps-HomeBemvindo {
-    margin-top: 2%;
-    margin-bottom: 2%;
-    color: #333;
+    margin-bottom: 32px;
+    color: #14532d;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
-.steps-HomeBemvindo .step, .steps-HomeBemvindo .step-icon {
+.steps-HomeBemvindo .step {
     display: inline-block;
     width: 22%;
-    margin: 10px;
+    min-width: 180px;
+    margin: 10px 1.5%;
     text-align: center;
+    vertical-align: top;
+    background: #f8f9fa;
+    border-radius: 18px 18px 40px 18px;
+    box-shadow: 0 2px 8px #b6e38822;
+    padding: 24px 10px 18px 10px;
+    transition: box-shadow 0.2s, transform 0.2s;
 }
-
+.steps-HomeBemvindo .step:hover {
+    box-shadow: 0 8px 24px #b6e38844;
+    transform: translateY(-4px) scale(1.04);
+}
 .step-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background: #3B82F6;
     color: white;
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: bold;
-    text-align: center;
-    line-height: 50px; /* Garante alinhamento vertical */
+    margin: 0 auto 12px auto;
 }
 
 .h3-steps-HomeBemvindo{
-    color: #333;
-    font-size: 1.2em;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    color: #14532d;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .p-steps-HomeBemvindo {
-    align-items: center;
     color: #666;
-    margin-bottom: 10%;
+    font-size: 1em;
+    margin-bottom: 0;
 }
 
-/* ------------------------------------ Seção final ------------------------------------ */
+/* Seção final */
 .start-journey-HomeBemvindo {
-    background: #3B82F6;
+    background: linear-gradient(90deg, #3B82F6 60%, #65a30d 100%);
     color: white;
-    padding: 40px;
-    border-radius: 10px;
+    padding: 44px 18px 36px 18px;
+    border-radius: 18px 18px 40px 18px;
+    margin: 40px 0 0 0;
+    box-shadow: 0 6px 24px rgba(20, 83, 45, 0.10), 0 1.5px 0 #a3e63511 inset;
 }
 
 .start-journey-HomeBemvindo .btn-sj-HomeBemvindo {
@@ -183,23 +233,72 @@
     background-color: white;
     color: #3B82F6;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1em;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
     cursor: pointer;
     text-decoration: none;
+    margin-top: 18px;
+    box-shadow: 0 2px 8px #b6e38822;
+    transition: background 0.2s, color 0.2s;
+}
+.start-journey-HomeBemvindo .btn-sj-HomeBemvindo:hover {
+    background: #14532d;
+    color: #fff;
 }
 
 .start-journey-HomeBemvindo .h1-sj-HomeBemvindo {
-    margin-top: 2%;
-    margin-bottom: 2%;
-    font-size: 1.8em;
+    margin-bottom: 18px;
+    font-size: 1.7em;
+    font-weight: bold;
 }
 
 .start-journey-HomeBemvindo .p-sj-HomeBemvindo {
-    margin-bottom: 2%;
+    margin-bottom: 18px;
+    font-size: 1.1em;
 }
 
+/* Espaço inferior */
 .espaco-HomeBemvindo {
     height: 50px;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+    .container-HomeBemvindo {
+        width: 98vw;
+        padding: 0 4px;
+    }
+    .animaldex-items {
+        flex-direction: column;
+        gap: 18px;
+    }
+    .animaldex-items .items-ai-HomeBemvindo {
+        width: 100%;
+    }
+    .steps-HomeBemvindo .step {
+        width: 45%;
+        min-width: 140px;
+        margin: 10px 2%;
+    }
+}
+@media (max-width: 600px) {
+    .container-HomeBemvindo {
+        width: 100vw;
+        padding: 0 2px;
+    }
+    .card-start-HomeBemvindo, .steps-HomeBemvindo, .start-journey-HomeBemvindo {
+        padding: 14px 4px 14px 4px;
+        border-radius: 12px;
+    }
+    .animaldex-items .items-ai-HomeBemvindo {
+        padding: 14px 4px;
+        border-radius: 12px;
+    }
+    .steps-HomeBemvindo .step {
+        width: 95%;
+        min-width: 100px;
+        margin: 10px 0;
+    }
 }

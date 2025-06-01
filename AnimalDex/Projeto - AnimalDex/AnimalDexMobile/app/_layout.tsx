@@ -12,6 +12,7 @@ export default function RootLayout() {
       <Stack.Screen name="Perfil" />
       <Stack.Screen name="EditarPerfil" />
       <Stack.Screen name="Explorar" />
+      <Stack.Screen name="AnimalDex" />
       <Stack.Screen name="+not-found" />
     </Stack>
   );

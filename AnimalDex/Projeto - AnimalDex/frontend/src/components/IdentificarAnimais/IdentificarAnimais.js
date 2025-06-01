@@ -83,7 +83,6 @@ const TestarIA = () => {
 
     return (
         <div className="body-Home-User">
-            <div className="espaco-HomeUser"></div>
             <div className="container-HomeUser">
                 {/* Botão de voltar para Home */}
                 <div className="top-bar">
@@ -112,12 +111,10 @@ const TestarIA = () => {
                     {erro && <p className="error-ia">{erro}</p>}
                 </div>
 
-                
-
                 {/* Card de Resultado */}
                 {resultado && (
                     <div className="card-ia resultado-ia">
-                        <h2 className="h2-modal">Resultado</h2>
+                        <h2 className="h2-modal">Animal Capturado!</h2>
                         <div className="animal-extincao">
                             <div className="icon-animal">
                                 <img
@@ -140,7 +137,7 @@ const TestarIA = () => {
                     </div>
                 )}
             </div>
-            <div className="espaco-HomeUser"></div>
+            
         </div>
     );
 };

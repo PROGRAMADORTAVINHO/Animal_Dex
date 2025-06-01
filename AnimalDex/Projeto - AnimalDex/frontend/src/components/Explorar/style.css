@@ -5,87 +5,215 @@
 }
 
 .body-explorar {
-    font-family: Arial, sans-serif;
-    background-color: #f3f6fc;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f6ef 0%, #f7ffe0 100%);
+    min-height: 100vh;
 }
 
 /* Barra superior */
 .top-bar-explorar {
     display: flex;
     align-items: center;
-    height: 40px;
-    padding: 10px 20px;
-    background-color: white;
-    border-bottom: 2px solid #dde1e6;
+    justify-content: center;
+    height: 60px;
+    padding: 0 24px;
+    background: linear-gradient(90deg, #e0e7ef 60%, #f7ffe0 100%);
+    border-bottom: 2px solid #b6e388;
+    box-shadow: 0 2px 8px rgba(20, 83, 45, 0.08);
+    position: relative;
 }
 
 .back-button-explorar {
+    position: absolute;
+    left: 24px;
+    color: #14532d;
+    background: #e8f6ef;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 16px;
+    font-weight: bold;
     text-decoration: none;
-    color: #5a5a5a;
-    font-size: 14px;
-    margin-right: 10px;
+    border: 1px solid #b6e388;
+    transition: background 0.2s, color 0.2s;
 }
-
 .back-button-explorar:hover {
-    color: black;
+    background: #bbf7d0;
+    color: #14532d;
 }
 
 .title_reader {
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
-    color: #1a1f36;
-    margin: 0;
+    color: #14532d;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    text-shadow: 0 1px 0 #fff, 0 2px 8px #b6e38844;
 }
 
-/* Card */
-.card-explorar {
-    background-color: white;
-    width: 90%;
-    max-width: 600px;
-    margin: 50px auto;
-    padding-bottom: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
+/* Filtros */
+.explorar-filtros {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    align-items: center;
+    margin: 32px auto 24px auto;
+    max-width: 900px;
+    flex-wrap: wrap;
+}
+.input-explorar, .select-explorar {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #b6e388;
+    font-size: 1em;
+    outline: none;
+    margin-bottom: 8px;
+    background: #f8f9fa;
+    transition: border 0.2s;
+}
+.input-explorar:focus, .select-explorar:focus {
+    border: 1.5px solid #007bff;
+}
+
+/* Grid dos cards */
+.explorar-grid {
+    margin: 0 auto 40px auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+    align-items: stretch;
+}
+
+/* Card animal estilo almanaque */
+.card-animal-explorar {
+    border-radius: 18px 18px 40px 18px;
     overflow: hidden;
-}
-
-/* Imagem no Card */
-.card-explorar .img-explorar {
+    background: #111;
+    border: 2px solid #14532d33;
+    box-shadow: 0 6px 24px rgba(20, 83, 45, 0.13);
     width: 100%;
-    height: auto;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    height: 400px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: block;
+}
+.card-animal-explorar:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 32px rgba(20, 83, 45, 0.28), 0 2px 0 #00000022 inset;
 }
 
-/* Textos do Card */
-.card-explorar .h1-explorar {
-    font-size: 25px;
+/* Imagem e interrogação ocupam 100% do card */
+.img-animal-explorar,
+.img-animal-oculto {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px 18px 40px 18px;
+    border-bottom: 3px solid #a3e635;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+.img-animal-oculto {
+    background: #111;
+}
+
+/* Overlay cobre tudo ao passar o mouse */
+.overlay-explorar {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 30, 10, 0.92);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px 20px 24px;
+    box-sizing: border-box;
+    border-radius: 18px 18px 40px 18px;
+    background-image: url('https://www.transparenttextures.com/patterns/leaf.png');
+    background-repeat: repeat;
+    background-size: 180px;
+    pointer-events: none;
+    z-index: 2;
+}
+.card-animal-explorar:hover .overlay-explorar {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.overlay-title-explorar {
+    font-size: 26px;
     font-weight: bold;
-    color: black;
-    margin: 15px 20px 5px;
+    margin: 0 0 4px 0;
+    color: #f7ffe0;
+    text-shadow: 0 2px 8px #14532d88;
 }
-
-.scientific_name{
-    font-size: 14px;
-    color: #5a5a5a;
-    margin: 10px 20px 5px;
-    text-align: justify;
+.overlay-subtitle-explorar {
+    font-size: 17px;
+    margin: 0 0 10px 0;
+    color: #bbf7d0;
+    font-style: italic;
 }
-
-.card-explorar .p-explorar {
-    font-size: 14px;
-    color: #5a5a5a;
-    margin: 0 20px 10px;
-    text-align: justify;
+.overlay-description-explorar {
+    font-size: 15px;
+    margin: 10px 0 18px 0;
+    flex-grow: 1;
+    color: #e8f6ef;
+    text-shadow: 0 1px 4px #14532d55;
 }
-
-.card-explorar .h2-explorar {
-    font-size: 20px;
+.overlay-footer-explorar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 15px;
+}
+.overlay-tag-explorar {
+    background: linear-gradient(90deg, #a3e635 60%, #65a30d 100%);
+    color: #14532d;
+    padding: 6px 14px;
+    margin-bottom: 0;
+    border-radius: 15px;
     font-weight: bold;
-    color: black;
-    margin: 10px 20px;
-    display: inline-block;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+    box-shadow: 0 1px 4px #14532d22;
+    letter-spacing: 0.5px;
+}
+
+/* Imagem oculta para animais não capturados */
+.interrogacao-animal {
+    color: #fff;
+    font-size: 5em;
+    font-weight: bold;
+    text-shadow: 0 2px 8px #000, 0 0 16px #fff;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Nenhum animal encontrado */
+.nenhum-animal {
+    text-align: center;
+    color: #888;
+    font-size: 1.2em;
+    grid-column: 1/-1;
+    margin: 40px 0;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .card-animal-explorar {
+        height: 220px;
+    }
+    .overlay-explorar {
+        padding: 14px 10px 10px 14px;
+    }
 }

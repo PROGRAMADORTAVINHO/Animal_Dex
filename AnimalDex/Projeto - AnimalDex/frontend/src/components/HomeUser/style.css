@@ -1,512 +1,67 @@
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.body-reader {
-    font-family: Arial, sans-serif;
-    background-color: red;
-}
-
-.top-bar-reader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    z-index: 100;
-    background-color: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-}
-
-
-
+/* Fundo geral inspirado no AnimalDex */
 .body-Home-User {
-    padding-top: 60px; /* mantém o espaço para o header fixo */
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    padding-top: 60px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f6ef 0%, #f7ffe0 100%);
     color: #333;
-    margin: 0;
+    min-height: 100vh;
 }
 
+/* Container centralizado e espaçamento */
 .container-HomeUser {
-    max-width: 800px;
-    margin: auto;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 16px;
 }
 
+/* Card do usuário */
 .cardUser {
-    background: white;
-    height: 160px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-.h1-cardUser{
-    margin-top: 3%;
-    color: #333;
-}
-
-.p-cardUser{
-    margin-top: 3%;
-    color: #666;
-}
-
-/* ----------- STATUS USER E CARDS ----------- */
-.statusUser {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    height: 210px;
-}
-
-.descobertas, .level {
-    background: white;
-    padding: 25px;
-    flex: 1;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    min-height: 160px;
+    padding: 28px 28px 20px 28px;
+    border-radius: 18px 18px 40px 18px;
+    box-shadow: 0 6px 24px rgba(20, 83, 45, 0.10), 0 1.5px 0 #a3e63511 inset;
+    margin-bottom: 28px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
 }
 
-.icon-descobertas, .icon-level {
+.h1-cardUser {
+    color: #14532d;
     font-size: 2em;
-    width: 50px;
-    height: 50px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 0 1px 0 #fff, 0 2px 8px #b6e38844;
 }
 
-.content-descobertas{
-    margin-top: 20px;
-    margin-left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.h3-content-descobertas {
-    color: #333;
-    font-size: 1.5em;
-}
-
-.h3-level{
-    color: #333;
-    margin-top: 8%;
-}
-
-.p-h3-content-descobertas, .p-level {
-    margin-top: 20px;
+.p-cardUser {
     color: #666;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+.error {
+    color: #e74c3c;
+    margin-top: 8px;
     font-size: 1em;
 }
 
-/* ----------- EXPLORAR E CAPTURAR ----------- */
-.explorar-capturar {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.explorar,
-.capturar-link {
-    flex: 1 1 0;
-    display: flex;
-    min-width: 0;
-}
-
-.capturar-link {
-    text-decoration: none;
-    height: auto;
-}
-
-.capturar {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 10px;
-    background: #28a745;
-    color: white;
-    padding: 15px;
-}
-
-.h2-explorar-capturar{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.p-explorar-capturar{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.explorar { 
-    background: #007bff; 
-    color: white;
-    border-radius: 10px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-}
-
-/* ----------- XP BAR ----------- */
-.xp-bar-container {
-    width: 90%;
-    height: 14px;
-    background: #e0e0e0;
-    border-radius: 7px;
-    margin: 12px 0 6px 0;
-    overflow: hidden;
-    position: relative;
-}
-
-.xp-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #3B82F6 60%, #28a745 100%);
-    border-radius: 7px;
-    transition: width 0.5s;
-    min-width: 32px;
-    position: relative;
-}
-
-.xp-bar-text {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #222;
-    font-weight: bold;
-    font-size: 0.95em;
-    width: 100%;
-    text-align: center;
-    text-shadow: 0 1px 4px rgba(255,255,255,0.4);
-    white-space: nowrap;
-    z-index: 2;
-    pointer-events: none;
-}
-
-/* ----------- RESTANTE DO LAYOUT ----------- */
-.sesao2 {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.extincao, .evento-natureza{
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.h2-extincao, .h2-evento-natureza {
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-
-.animal-extincao {
-    width: 90%;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(255, 0, 0, 0.158);
-    border: solid 1px rgba(255, 0, 0, 0.226);
-    margin-bottom: 15px;
-}
-
-.evento {
-    width: 90%;
-    height: 26%;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(30, 255, 0, 0.158);
-    border: solid 1px rgba(30, 255, 0, 0.226);
-    margin-bottom: 15px;
-}
-
-.icon-animal, .icon-evento-natureza {
-    display: flex;
-    align-items: center;
-}
-
-.icon-evento-natureza{
-    margin-top: 3%;
-}
-
-.icon-extincao, .icon-evento {
-    font-size: 24px;
-    margin-right: 10px;
-}
-
-.animal-extincao-content, .content-evento {
-    flex-grow: 1;
-}
-
-.h3-secao2 {
-    margin: 0;
-    font-size: 17px;
-    color: #34495e;
-}
-
-.animal-extincao-content .p-secao2 {
-    margin: 5px 0;
-    color: #e74c3c;
-}
-
-.content-evento .p-secao2 {
-    margin: 5px 0;
-    color: #2e7c00;
-}
-
-.quantidade-extincao {
-    color: rgba(0, 0, 0, 0.747);
-}
-
-.sesao3 {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-}
-
-.habitat-da-semana, .CuriosityDay{
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.h3-habitat{
-    margin-top: 0px;
-    margin-bottom: 10px;
-}
-
-.h3-habitat-especie{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.p-habitat-da-semana{
-    margin-top: 0;
-}
-
-.ul-habitat-da-semana {
-    margin: 0;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 5px;
-}
-
-.li-habitat-da-semana {
-    background: #dce6ff;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 14px;
-}
-
-.h2-CuriosityDay, .h2-habitat-da-semana {
-    color: #2c3e50;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.title-Curiosity{
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-.img-CuriosityDay {
-    margin-bottom: 20px;
-}
-
-.foto-animal {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.content-CuriosityDay {
-    color: #7f8c8d;
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: justify;
-    margin: 0;
-}
-
-/* Seção de atividades recentes */
-.RecentActivities {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 24px 32px;
-    width: 100%;
-    margin: 32px auto 0 auto;
-}
-
-.RecentActivities h3 {
-    font-size: 22px;
-    color: #2c3e50;
-    margin-bottom: 18px;
-    font-weight: bold;
-}
-
-.Activities {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    padding: 0;
-    border: none;
-    background: none;
-}
-
-.CapturedAnimal {
-    display: flex;
-    align-items: center;
-    background: #f7faff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    padding: 16px 18px;
-    transition: box-shadow 0.2s;
-}
-
-.CapturedAnimal:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-    background: #eaf3ff;
-}
-
-.ImgAnimal {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #007bff;
-    background: #fff;
-}
-
-.content-RecentActivities {
-    margin-left: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.h3-RecentActivities {
-    font-size: 18px;
-    color: #007bff;
-    margin: 0;
-    font-weight: bold;
-}
-
-.p-RecentActivities {
-    margin: 0;
-    font-size: 14px;
-    color: #555;
-}
-
-.p-RecentActivities:last-child {
-    color: #888;
-    font-size: 13px;
-}
-
-.espaco-HomeUser {
-    height: 50px;
-}
-
-.modal {
-    display: none; /* Esconder a modal por padrão */
-    position: fixed;
-    z-index: 1000; /* Garantir que fique acima de tudo */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
-    justify-content: center;
-    align-items: center;
-}
-
-.h2-modal{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 800px;
-}
-
-.busca-btn{
-    display: flex;
-}
-
-.intut-modal {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.btn-modal{
-    margin: 10px;
-    height: 15%;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.btn-modal:hover {
-    background-color: #0056b3;
-}
-
-.btn-minha-colecao-pequeno {
-    display: inline-block;
-    margin-top: 12px;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 7px 16px;
-    font-size: 0.98em;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s;
-}
-.btn-minha-colecao-pequeno:hover {
-    background: #0056b3;
-}
-
+/* Card de link para coleção */
 .cardMinhaColecao {
     display: flex;
     align-items: center;
     gap: 18px;
     background: #f8f9fa;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border-radius: 18px 18px 40px 18px;
+    box-shadow: 0 2px 8px rgba(20,83,45,0.07);
     padding: 18px 24px;
     margin: 18px 0 28px 0;
     text-decoration: none;
@@ -515,7 +70,7 @@
 }
 .cardMinhaColecao:hover {
     background: #e2e6ea;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+    box-shadow: 0 4px 16px rgba(20,83,45,0.13);
 }
 .icon-minha-colecao {
     font-size: 2.2em;
@@ -537,4 +92,404 @@
     margin: 0;
     color: #333;
     font-size: 1em;
+}
+
+/* STATUS USER E CARDS */
+.statusUser {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 28px;
+    height: 210px;
+}
+.descobertas, .level {
+    background: #fff;
+    padding: 28px;
+    flex: 1;
+    border-radius: 18px 18px 40px 18px;
+    box-shadow: 0 6px 24px rgba(20, 83, 45, 0.10), 0 1.5px 0 #a3e63511 inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.icon-descobertas, .icon-level {
+    font-size: 2.2em;
+    width: 50px;
+    height: 50px;
+}
+.content-descobertas {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.h3-content-descobertas, .h3-level {
+    color: #14532d;
+    font-size: 1.5em;
+    margin: 0;
+}
+.p-h3-content-descobertas, .p-level {
+    margin-top: 12px;
+    color: #666;
+    font-size: 1em;
+}
+
+/* XP BAR */
+.xp-bar-container {
+    width: 90%;
+    height: 14px;
+    background: #e0e0e0;
+    border-radius: 7px;
+    margin: 12px 0 6px 0;
+    overflow: hidden;
+    position: relative;
+}
+.xp-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #3B82F6 60%, #28a745 100%);
+    border-radius: 7px;
+    transition: width 0.5s;
+    min-width: 32px;
+    position: relative;
+}
+.xp-bar-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222;
+    font-weight: bold;
+    font-size: 0.95em;
+    width: 100%;
+    text-align: center;
+    text-shadow: 0 1px 4px rgba(255,255,255,0.4);
+    white-space: nowrap;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* EXPLORAR E CAPTURAR */
+.explorar-capturar {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 28px;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.explorar, .capturar-link {
+    flex: 1;
+    max-width: 420px;
+}
+
+.capturar-link {
+    text-decoration: none;
+    height: auto;
+}
+.capturar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 18px 18px 40px 18px;
+    background: #28a745;
+    color: white;
+    padding: 18px;
+    transition: background 0.2s;
+}
+.capturar:hover {
+    background: #218838;
+}
+.h2-explorar-capturar {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.p-explorar-capturar {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.explorar {
+    background: #007bff;
+    color: white;
+    border-radius: 18px 18px 40px 18px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    transition: background 0.2s;
+}
+.explorar:hover {
+    background: #0056b3;
+}
+
+/* SESSÕES E CARDS SECUNDÁRIOS */
+.sesao2, .sesao3 {
+    display: flex;
+    justify-content: space-around;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+.extincao, .evento-natureza, .habitat-da-semana, .CuriosityDay {
+    background: #fff;
+    padding: 20px;
+    border-radius: 18px 18px 40px 18px;
+    box-shadow: 0 6px 24px rgba(20, 83, 45, 0.10), 0 1.5px 0 #a3e63511 inset;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.h2-extincao, .h2-evento-natureza, .h2-habitat-da-semana, .h2-CuriosityDay {
+    color: #14532d;
+    margin-bottom: 18px;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.animal-extincao, .evento {
+    width: 90%;
+    padding: 16px;
+    border-radius: 14px;
+    background-color: #f7faff;
+    border: solid 1px #b6e388;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+.icon-animal, .icon-evento-natureza {
+    display: flex;
+    align-items: center;
+}
+.icon-extincao, .icon-evento {
+    font-size: 24px;
+    margin-right: 10px;
+}
+.animal-extincao-content, .content-evento {
+    flex-grow: 1;
+}
+.h3-secao2 {
+    margin: 0;
+    font-size: 17px;
+    color: #34495e;
+}
+.animal-extincao-content .p-secao2 {
+    margin: 5px 0;
+    color: #e74c3c;
+}
+.content-evento .p-secao2 {
+    margin: 5px 0;
+    color: #2e7c00;
+}
+.quantidade-extincao {
+    color: rgba(0, 0, 0, 0.747);
+}
+.habitat-da-semana, .CuriosityDay {
+    margin-bottom: 0;
+}
+.h3-habitat, .title-Curiosity {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.h3-habitat-especie {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.p-habitat-da-semana {
+    margin-top: 0;
+}
+.ul-habitat-da-semana {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 5px;
+}
+.li-habitat-da-semana {
+    background: #dce6ff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+.img-CuriosityDay {
+    margin-bottom: 20px;
+}
+.foto-animal {
+    width: 100%;
+    border-radius: 10px;
+}
+.content-CuriosityDay {
+    color: #7f8c8d;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;
+    margin: 0;
+}
+
+/* Seção de atividades recentes */
+.RecentActivities {
+    background-color: #fff;
+    border-radius: 18px 18px 40px 18px;
+    box-shadow: 0 6px 24px rgba(20, 83, 45, 0.10), 0 1.5px 0 #a3e63511 inset;
+    padding: 24px 32px;
+    width: 100%;
+    margin: 32px auto 0 auto;
+}
+.RecentActivities h3 {
+    font-size: 22px;
+    color: #14532d;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+.Activities {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 0;
+    border: none;
+    background: none;
+}
+.CapturedAnimal {
+    display: flex;
+    align-items: center;
+    background: #f7faff;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 16px 18px;
+    transition: box-shadow 0.2s;
+}
+.CapturedAnimal:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    background: #eaf3ff;
+}
+.ImgAnimal {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #007bff;
+    background: #fff;
+}
+.content-RecentActivities {
+    margin-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.h3-RecentActivities {
+    font-size: 18px;
+    color: #007bff;
+    margin: 0;
+    font-weight: bold;
+}
+.p-RecentActivities {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+.p-RecentActivities:last-child {
+    color: #888;
+    font-size: 13px;
+}
+
+.espaco-HomeUser {
+    height: 50px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+.h2-modal {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 18px 18px 40px 18px;
+    width: 800px;
+}
+.busca-btn {
+    display: flex;
+}
+.intut-modal {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.btn-modal {
+    margin: 10px;
+    height: 15%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-modal:hover {
+    background-color: #0056b3;
+}
+
+/* Botão pequeno coleção */
+.btn-minha-colecao-pequeno {
+    display: inline-block;
+    margin-top: 12px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 16px;
+    font-size: 0.98em;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.btn-minha-colecao-pequeno:hover {
+    background: #0056b3;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+    .container-HomeUser {
+        max-width: 98vw;
+        padding: 0 4px;
+    }
+    .statusUser, .sesao2, .sesao3 {
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+    }
+}
+@media (max-width: 600px) {
+    .container-HomeUser {
+        max-width: 100vw;
+        padding: 0 2px;
+    }
+    .statusUser, .sesao2, .sesao3 {
+        flex-direction: column;
+        gap: 8px;
+        height: auto;
+    }
+    .cardUser, .descobertas, .level, .extincao, .evento-natureza, .habitat-da-semana, .CuriosityDay, .RecentActivities {
+        padding: 10px;
+        border-radius: 12px;
+    }
 }

@@ -1,142 +1,180 @@
-.body_minha-colecao {
+/* Fundo geral */
+.body_minhacolecao {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f6ef 0%, #f7ffe0 100%);
+    min-height: 100vh;
 }
 
-/* Barra superior */
+/* HEADER MAIS BONITO E CENTRALIZADO */
 .top-bar-minha-colecao {
     display: flex;
     align-items: center;
-    height: 40px;
-    padding: 10px 20px;
-    background-color: white;
-    border-bottom: 2px solid #dde1e6;
+    justify-content: center;
+    height: 60px;
+    padding: 0 24px;
+    background: linear-gradient(90deg, #e0e7ef 60%, #f7ffe0 100%);
+    border-bottom: 2px solid #b6e388;
+    box-shadow: 0 2px 8px rgba(20, 83, 45, 0.08);
+    position: relative;
 }
 
-.back-button-minha-colecao {
+.back-button {
+    position: absolute;
+    left: 24px;
+    color: #14532d;
+    background: #e8f6ef;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 16px;
+    font-weight: bold;
     text-decoration: none;
-    color: #5a5a5a;
-    font-size: 14px;
-    margin-right: 10px;
+    border: 1px solid #b6e388;
+    transition: background 0.2s, color 0.2s;
 }
-
-.back-button-minha-colecao:hover {
-    color: black;
+.back-button:hover {
+    background: #bbf7d0;
+    color: #14532d;
 }
 
 .title_reader {
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
-    color: #1a1f36;
-    margin: 0;
+    color: #14532d;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    text-shadow: 0 1px 0 #fff, 0 2px 8px #b6e38844;
 }
 
 .conteiner-minhacolecao {
     margin-top: 50px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 8%;
+    margin-right: 8%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
 }
 
+/* CARD: fundo escuro, sem brilho verde, overlay só no hover */
 .card-animal {
-    border-radius: 10px;
+    border-radius: 18px 18px 40px 18px;
     overflow: hidden;
-    background-color: #000;
-    width: 90%;
+    background: #111;
+    border: 2px solid #14532d33;
+    box-shadow: 0 6px 24px rgba(20, 83, 45, 0.13);
+    width: 100%;
     height: 400px;
     aspect-ratio: 16 / 9;
     position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.card-animal:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 32px rgba(20, 83, 45, 0.28), 0 2px 0 #00000022 inset;
 }
 
+/* Imagem do animal */
 .card-animal img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 10px;
-    transition: opacity 0.3s ease;
+    border-radius: 18px 18px 40px 18px;
+    transition: opacity 0.3s;
+    border-bottom: 3px solid #a3e635;
 }
 
-/* Estilo da sobreposição */
+/* Sobreposição: só aparece no hover */
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(10, 30, 10, 0.92);
     color: #fff;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px;
+    padding: 24px 20px 20px 24px;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 18px 18px 40px 18px;
+    background-image: url('https://www.transparenttextures.com/patterns/leaf.png');
+    background-repeat: repeat;
+    background-size: 180px;
+    pointer-events: none;
 }
-
 .card-animal:hover .overlay {
     opacity: 1;
 }
-
 .card-animal:hover img {
-    opacity: 0.5;
+    opacity: 0.45;
 }
-
-/* Estilos do texto da sobreposição */
 .overlay-title {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
-    margin: 0;
+    margin: 0 0 4px 0;
+    color: #f7ffe0;
+    text-shadow: 0 2px 8px #14532d88;
 }
-
 .overlay-subtitle {
-    font-size: 18px;
-    margin: 5px 0;
+    font-size: 17px;
+    margin: 0 0 10px 0;
+    color: #bbf7d0;
+    font-style: italic;
 }
-
 .overlay-description {
-    font-size: 16px;
-    margin: 10px 0;
+    font-size: 15px;
+    margin: 10px 0 18px 0;
     flex-grow: 1;
+    color: #e8f6ef;
+    text-shadow: 0 1px 4px #14532d55;
 }
-
-/* Estilo do rodapé da sobreposição */
 .overlay-footer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 15px;
 }
-
 .overlay-tag {
-    background-color: #1e8fff34;
-    padding: 5px 10px;
-    margin-bottom: 10px;
+    background: linear-gradient(90deg, #a3e635 60%, #65a30d 100%);
+    color: #14532d;
+    padding: 6px 14px;
+    margin-bottom: 0;
     border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 1px 4px #14532d22;
+    letter-spacing: 0.5px;
 }
-
 .overlay-date {
-    color: #ccc;
+    color: #e8f6ef;
+    font-size: 13px;
+    margin-top: 2px;
+    font-style: italic;
 }
 
-/* Estilo do botão */
-.overlay-button {
-    background-color: #1e90ff;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
+/* Responsivo */
+@media (max-width: 900px) {
+    .conteiner-minhacolecao {
+        grid-template-columns: 1fr 1fr;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
 }
-
-.overlay-button:hover {
-    background-color: #4682b4;
+@media (max-width: 600px) {
+    .conteiner-minhacolecao {
+        grid-template-columns: 1fr;
+        margin-left: 0;
+        margin-right: 0;
+        gap: 18px;
+    }
+    .card-animal {
+        height: 280px;
+    }
+    .overlay {
+        padding: 14px 10px 10px 14px;
+    }
 }
