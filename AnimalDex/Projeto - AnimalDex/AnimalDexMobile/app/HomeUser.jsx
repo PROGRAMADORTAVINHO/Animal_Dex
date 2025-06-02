@@ -105,6 +105,18 @@ export default function HomeUser() {
         </View>
       </TouchableOpacity>
 
+      {/* Botão Leadboard */}
+      <TouchableOpacity
+        style={styles.leadboardBox}
+        onPress={() => router.push('/Leadboard')}
+      >
+        <Text style={styles.leadboardIcon}>🏆</Text>
+        <View>
+          <Text style={styles.leadboardTitle}>Ranking dos Jogadores</Text>
+          <Text style={styles.leadboardText}>Veja quem são os maiores exploradores!</Text>
+        </View>
+      </TouchableOpacity>
+
       {/* Status do usuário */}
       <View style={styles.statusContainer}>
         <View style={styles.statusBox}>
@@ -354,5 +366,17 @@ const styles = StyleSheet.create({
   modalButtonText: {
     color: '#fff',
     fontWeight: 'bold'
-  }
+  },
+  leadboardBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f8f9fa',
+    borderRadius: 18,
+    padding: 18,
+    marginBottom: 18,
+    elevation: 2
+  },
+  leadboardIcon: { fontSize: 22, marginRight: 14 },
+  leadboardTitle: { fontSize: 18, fontWeight: 'bold', color: '#20B2AA' },
+  leadboardText: { color: '#333', fontSize: 14 },
 });

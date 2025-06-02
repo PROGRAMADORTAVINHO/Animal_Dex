@@ -10,6 +10,7 @@ import Login from './Pages/Login';
 import Registro from './Pages/Registro';
 import Perfil from './Pages/Perfil';
 import TestarIA from './components/IdentificarAnimais/IdentificarAnimais';
+import Leadboard from './components/Leadboard';
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
                 <Route path="/perfil" element={<Perfil />} /> {/* Perfil */}
                 <Route path="/animaldex" element={<AnimalDex />} /> {/* Perfil */}
                 <Route path="/identificar" element={<TestarIA />} />
+                <Route path="/leadboard" element={<Leadboard />} />
             </Routes>
         </Router>
     );

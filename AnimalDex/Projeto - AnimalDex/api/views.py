@@ -4,6 +4,8 @@ from rest_framework import generics, permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth import get_user_model
 from rest_framework.generics import UpdateAPIView, DestroyAPIView
 
 from .models import Animais, Identificacao, PerfilUsuario
@@ -136,3 +138,33 @@ class ViewPerfilUsuario(generics.RetrieveAPIView):
         return self.request.user.perfil
 
 # -------------------------------------------------------------------------------------------------------------- #
+
+# Leadboard
+class LeadboardView(APIView):
+    def get(self, request):
+        User = get_user_model()
+        users = User.objects.all()
+        data = []
+        for user in users:
+            capturas = Identificacao.objects.filter(usuario=user)
+            animais_ids = capturas.values_list('animal', flat=True).distinct()
+            animais_descobertos = animais_ids.count()
+            nivel = getattr(user.perfil, 'nivel', 1)
+
+            animal_mais_raro = None
+            if animais_ids:
+                animais = Animais.objects.filter(id__in=animais_ids)
+                mais_raro = animais.order_by('-nivel_extincao').first()
+                if mais_raro:
+                    animal_mais_raro = {
+                        "nome_comum": mais_raro.nome_comum,
+                        "nivel_extincao": mais_raro.nivel_extincao
+                    }
+            data.append({
+                "username": user.username,
+                "nivel": nivel,
+                "animais_descobertos": animais_descobertos,
+                "animal_mais_raro": animal_mais_raro
+            })
+        data.sort(key=lambda x: (-x["animais_descobertos"], -x["nivel"]))
+        return Response(data)

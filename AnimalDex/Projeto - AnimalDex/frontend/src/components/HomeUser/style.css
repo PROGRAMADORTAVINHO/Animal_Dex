@@ -466,6 +466,46 @@
     background: #0056b3;
 }
 
+/* Novos estilos para o card do leaderboard */
+.cardLeadboard {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #f8f9fa;
+    border-radius: 18px 18px 40px 18px;
+    box-shadow: 0 2px 8px rgba(20,83,45,0.07);
+    padding: 18px 24px;
+    margin: 0 0 28px 0;
+    text-decoration: none;
+    transition: box-shadow 0.2s, background 0.2s;
+    cursor: pointer;
+}
+.cardLeadboard:hover {
+    background: #e2e6ea;
+    box-shadow: 0 4px 16px rgba(20,83,45,0.13);
+}
+.icon-leadboard {
+    font-size: 2.2em;
+    background: #20B2AA;
+    color: #fff;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.h3-leadboard {
+    margin: 0 0 4px 0;
+    font-size: 1.25em;
+    color: #20B2AA;
+}
+.p-leadboard {
+    margin: 0;
+    color: #333;
+    font-size: 1em;
+}
+
 /* Responsivo */
 @media (max-width: 900px) {
     .container-HomeUser {

@@ -1,0 +1,61 @@
+.leadboard-container {
+  max-width: 600px;
+  margin: 32px auto;
+  background: #e8f6ef;
+  border-radius: 18px;
+  padding: 24px 18px;
+  box-shadow: 0 2px 12px #0001;
+}
+.leadboard-title {
+  text-align: center;
+  color: #14532d;
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+.leadboard-loading {
+  text-align: center;
+  color: #20B2AA;
+  font-size: 1.2rem;
+  margin: 40px 0;
+}
+.leadboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.leadboard-card {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid #b6e388;
+  box-shadow: 0 1px 4px #0001;
+}
+.leadboard-rank {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3B82F6;
+  width: 48px;
+  text-align: center;
+  margin-right: 12px;
+}
+.leadboard-info {
+  flex: 1;
+}
+.leadboard-username {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #14532d;
+}
+.leadboard-level,
+.leadboard-capturas,
+.leadboard-rare {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 2px;
+}
+.leadboard-rarity-tag {
+  color: #a3e635;
+  font-weight: bold;
+}

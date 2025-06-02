@@ -6,6 +6,7 @@ from .views import (
     ViewListaAnimais,
     ViewPerfilUsuario,
     ViewAlmanaqueUsuario,
+    LeadboardView,
 )
 
 urlpatterns = [
@@ -18,4 +19,5 @@ urlpatterns = [
 
     
     path('perfil/identificacoes/', ViewAlmanaqueUsuario.as_view(), name='usuario-identificacoes'),
+    path('leadboard/', LeadboardView.as_view(), name='leadboard'),
 ]

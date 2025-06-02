@@ -110,6 +110,15 @@ const HomeUser_logada = () => {
                         </div>
                     </Link>
 
+                    {/* NOVO CARD DE LINK PARA LEADBOARD */}
+                    <Link to="/leadboard" className="cardLeadboard" style={{ textDecoration: 'none' }}>
+                        <div className="icon-leadboard">🏆</div>
+                        <div>
+                            <h3 className="h3-leadboard">Ranking dos Jogadores</h3>
+                            <p className="p-leadboard">Veja quem são os maiores exploradores!</p>
+                        </div>
+                    </Link>
+
                     <div className="statusUser">
                         <div className="descobertas">
                             <div className="icon-descobertas"> 🌟 </div>

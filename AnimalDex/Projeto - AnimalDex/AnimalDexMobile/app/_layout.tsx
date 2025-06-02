@@ -9,6 +9,7 @@ export default function RootLayout() {
       <Stack.Screen name="HomeUser" />
       <Stack.Screen name="Identificar" />
       <Stack.Screen name="ListaAnimais" />
+      <Stack.Screen name="Leadboard" />
       <Stack.Screen name="Perfil" />
       <Stack.Screen name="EditarPerfil" />
       <Stack.Screen name="Explorar" />
